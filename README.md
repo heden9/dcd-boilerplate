@@ -26,6 +26,11 @@ $ npm run stage
 $ npm run build
 ```
 
+## 步骤六：提交review
+```shell
+$ npm run review gengweibiao.fe
+```
+
 ## 项目目录结构及说明
 
 ```
