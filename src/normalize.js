@@ -21,7 +21,7 @@
 // (determined by `object-assign` internally) the polyfill will be discarded
 // and the native implementation used.
 Object.assign = require('object-assign')
-
+require('raf/polyfill')
 // 2) Promise
 // ------------------------------------
 if (typeof Promise === 'undefined') {
