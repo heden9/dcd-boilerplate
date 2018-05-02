@@ -1,7 +1,7 @@
 module.exports = {
     directories: {
         scripts: "",
-        pages: "src",
+        pages: "src/entries",
     },
     scripts: {
         vendors: [
@@ -9,12 +9,18 @@ module.exports = {
             "react",
             "react-dom"
         ],
-        index: "src/index.js",
+        app: "src/entries/app/index.js",
+        bpp: "src/entries/bpp/index.js",
     },
     pages: {
-        "index.html": {
+        "app/index.html": {
             scripts: {
-                body: [ "vendors", "index" ]
+                body: [ "vendors", "app" ]
+            }
+        },
+        "bpp/index.html": {
+            scripts: {
+                body: [ "vendors", "bpp" ]
             }
         },
     }

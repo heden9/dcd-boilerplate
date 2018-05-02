@@ -104,7 +104,15 @@ var config = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015', 'react', 'stage-0']
+                        presets: [
+                            ["env", {
+                                "targets": {
+                                "browsers": ["last 2 versions", "safari >= 7"]
+                                },
+                                "loose": true
+                            }]
+                            , 'react', 'stage-0'],
+                        plugins: ['transform-decorators-legacy', 'react-hot-loader/babel']
                     }
                 }
             },
