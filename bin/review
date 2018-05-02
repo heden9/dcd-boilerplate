@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const [p1, p2, ...arg] = process.argv
+const exec = require('child_process').exec
+const r = arg.map(r => 'r='+r).join(',')
+console.log(r);
+exec(`git push origin HEAD:refs/for/master%${r}`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`${error}`);
+    return;
+  }
+  stdout && console.log(`${stdout}`);
+  stderr && console.log(`${stderr}`);
+})

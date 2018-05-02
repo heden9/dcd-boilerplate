@@ -21,7 +21,6 @@ config.plugins = config.plugins.concat([
 
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
 
     new BrowserSyncPlugin({
         host: '127.0.0.1',
