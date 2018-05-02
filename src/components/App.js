@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 class App extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
-    routes: PropTypes.object.isRequired,
+    routes: PropTypes.object.isRequired
   }
 
   shouldComponentUpdate () {
@@ -17,7 +17,11 @@ class App extends React.Component {
     return (
       <Provider store={this.props.store}>
         <div style={{ height: '100%' }}>
-          <Router history={hashHistory} children={this.props.routes} />
+          <Router history={hashHistory} >
+            {
+              this.props.routes
+            }
+          </Router>
         </div>
       </Provider>
     )

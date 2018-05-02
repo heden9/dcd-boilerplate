@@ -90,6 +90,14 @@ var config = {
 
     module: {
         rules: [
+            { // 在编译之前执行这个loader，如果报错了就不继续
+                enforce: 'pre',
+                test: /.(js|jsx)$/,
+                loader: 'eslint-loader',
+                exclude: [
+                    path.join(__dirname, '../node_modules')
+                ]
+            },
             {
                 test: /\.(jsx|js)?$/,
                 exclude: /node_modules/,
@@ -208,7 +216,11 @@ var config = {
 
         new InlineManifestWebpackPlugin({name: 'webpackManifest'}),
 
-        new ExtractTextPlugin(`css/[name]${isDev ? '' : '_[contenthash]'}.css`, {allChunks: true}),
+        new ExtractTextPlugin({
+            filename: `css/[name]${isDev ? '' : '_[contenthash]'}.css`,
+            allChunks: true,
+            disable: isDev
+        }),
 
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendors'].concat(['manifest']),

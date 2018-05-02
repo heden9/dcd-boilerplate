@@ -15,7 +15,7 @@ export const PageLayout = ({ children }) => (
   </div>
 )
 PageLayout.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 }
 
 export default PageLayout
