@@ -2,22 +2,21 @@ var path = require('path')
 var fs = require('fs')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
+var px2rem = require('postcss-px2rem')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
 
-var srcPath = path.resolve(__dirname, '../src');
-var assetsPath = path.resolve(srcPath, 'assets');
-var utilsPath = path.join(assetsPath, 'js/utils/utils.js');
+var srcPath = path.resolve(__dirname, '../src')
+var assetsPath = path.resolve(srcPath, 'assets')
+var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
 
 
 var mapConfig = require('../config/src.map.js')
 var devConfig = require('../config/dev.env.js')
 var prodConfig = require('../config/prod.env.js')
-
-var isDev = (process.env.NODE_ENV === 'development')
 
 var __DEV__ = process.env.NODE_ENV === 'development'
 var __TEST__ = process.env.NODE_ENV === 'test'
@@ -82,10 +81,10 @@ function resolve_pages (path, files) {
 var config = {
     entry: entries,
     output: {
-        path: isDev ? relative('dist', devConfig.outputPath) : relative('dist'),
-        filename: `js/[name]${isDev ? '' : '_[chunkhash]'}.js`,
-        chunkFilename: `js/[name]${isDev ? '' : '_[chunkhash]'}.js`,
-        publicPath: isDev ? devConfig.publicPath : prodConfig.publicPath,
+        path: __DEV__ ? relative('dist', devConfig.outputPath) : relative('dist'),
+        filename: `js/[name]${__DEV__ ? '' : '_[chunkhash]'}.js`,
+        chunkFilename: `js/[name]${__DEV__ ? '' : '_[chunkhash]'}.js`,
+        publicPath: __DEV__ ? devConfig.publicPath : prodConfig.publicPath,
     },
 
     module: {
@@ -128,7 +127,10 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})],
+                                plugins: [
+                                    px2rem({ remUnit: 37.5 }),
+                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']}),
+                                ],
                             }
                         }
                     ]
@@ -146,7 +148,10 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})],
+                                plugins: [
+                                    px2rem({ remUnit: 37.5 }),
+                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
+                                ],
                             }
                         },
                         'less-loader'
@@ -165,7 +170,10 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})],
+                                plugins: [
+                                    px2rem({ remUnit: 37.5 }),
+                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
+                                ],
                             }
                         },
                         'sass-loader'
@@ -178,7 +186,7 @@ var config = {
                     loader: 'url-loader',
                     options: {
                         limit: 2048,
-                        name: `image/[name]${isDev ? '' : '_[hash]'}.[ext]`
+                        name: `image/[name]${__DEV__ ? '' : '_[hash]'}.[ext]`
                     }
                 }]
             },
@@ -188,7 +196,7 @@ var config = {
                     loader: 'url-loader',
                     options: {
                         limit: 102400,
-                        name: `font/[name]${isDev ? '' : '_[hash]'}.[ext]`
+                        name: `font/[name]${__DEV__ ? '' : '_[hash]'}.[ext]`
                     }
                 }]
             },
@@ -197,7 +205,7 @@ var config = {
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: `media/[name]${isDev ? '' : '_[hash]'}.[ext]`
+                        name: `media/[name]${__DEV__ ? '' : '_[hash]'}.[ext]`
                     }
                 }]
             },
@@ -225,14 +233,14 @@ var config = {
         new InlineManifestWebpackPlugin({name: 'webpackManifest'}),
 
         new ExtractTextPlugin({
-            filename: `css/[name]${isDev ? '' : '_[contenthash]'}.css`,
+            filename: `css/[name]${__DEV__ ? '' : '_[contenthash]'}.css`,
             allChunks: true,
-            disable: isDev
+            disable: __DEV__
         }),
 
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendors'].concat(['manifest']),
-            filename: `js/[name]${isDev ? '' : '_[chunkhash]'}.js`,
+            filename: `js/[name]${__DEV__ ? '' : '_[chunkhash]'}.js`,
             minChunks: Infinity,
         }),
 

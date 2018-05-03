@@ -6,7 +6,7 @@ import {
 } from 'dva/router'
 import PropTypes from 'prop-types'
 import dynamic from '../../utils/dynamic'
-import { AppRegistry } from '..'
+import { AppRegistry } from '../common'
 import Cover from '../../layouts/cover'
 const { ConnectedRouter } = routerRedux
 const routes = [

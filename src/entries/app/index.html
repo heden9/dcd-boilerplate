@@ -10,6 +10,8 @@
     <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
     <% } %>
 
+    <%= require('raw-loader!../common.html') %>
+
     <% for (var head of htmlWebpackPlugin.options.head) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[head].entry %>"></script>
     <% } %>

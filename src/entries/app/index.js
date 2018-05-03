@@ -6,9 +6,13 @@ import {
 } from 'dva/router'
 import PropTypes from 'prop-types'
 import dynamic from '../../utils/dynamic'
-import { AppRegistry } from '..'
+import { AppRegistry } from '../common'
 import Cover from '../../layouts/cover'
+
+require('./style.less')
+
 const { ConnectedRouter } = routerRedux
+
 const routes = [
   {
     path: '/home',
@@ -21,6 +25,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/book')
   }
 ]
+
 function Main ({ history, app }) {
   return (
     <ConnectedRouter history={history}>
@@ -44,6 +49,7 @@ function Main ({ history, app }) {
     </ConnectedRouter>
   )
 }
+
 Main.propTypes = {
   history: PropTypes.object,
   app: PropTypes.object
