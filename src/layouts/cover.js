@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'dva/router'
+import Navbar from '../components/Navbar'
 export default function Cover ({ children }) {
   return (
     <React.Fragment>
-      <Link to="/home" >home</Link>
-      <Link to="/book" >book</Link>
+      <Navbar title="#集卡世界杯#" />
       {
         children
       }

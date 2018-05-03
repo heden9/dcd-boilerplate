@@ -1,5 +1,14 @@
 import React from 'react'
 import './style'
-export default function Home () {
-  return <div>Home</div>
+export default class Home extends React.Component {
+  componentDidMount () {
+
+  }
+  render () {
+    return (
+      <div>
+        home
+      </div>
+    )
+  }
 }
