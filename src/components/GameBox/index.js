@@ -10,7 +10,7 @@ export default class GameBox extends React.Component {
     return (
       <div className="cpt-game-box">
         {
-          showBanner && <img className="banner" src={require('./img/b1.png')}/>
+          showBanner && <img className="banner" src={require('./images/b1.png')}/>
         }
         <div>{ children }</div>
       </div>

@@ -256,12 +256,12 @@ var config = {
         alias: {
             // 路径别名
             SRC: relative('src'),
+            Assets: relative('src/assets'),
             Component: relative('src/components'),
             Widget: relative('src/widgets'),
             Plugin: relative('src/plugins'),
             Template: relative('src/templates'),
             Pagelet: relative('src/templates/include'),
-            Assets: assetsPath,
         },
     },
 }

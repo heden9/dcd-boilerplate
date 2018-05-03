@@ -8,7 +8,7 @@ const navbar = {
 function Navbar () {
   return (
     <div className="navbar">
-      <img className="logo" src={require('./img/logo@3x.png')} />
+      <img className="logo" src={require('./images/logo@3x.png')} />
       <ul>
         {
           Object.keys(navbar).map(item => (

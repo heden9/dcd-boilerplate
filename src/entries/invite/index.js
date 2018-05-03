@@ -2,29 +2,34 @@ import React from 'react'
 import {
   Route,
   Switch,
+  Redirect,
   routerRedux
 } from 'dva/router'
 import PropTypes from 'prop-types'
 import dynamic from '../../utils/dynamic'
 import { AppRegistry } from '../common'
-import Cover from '../../layouts/cover'
+import InvideCover from '../../layouts/InviteCover'
+import './style'
+
 const { ConnectedRouter } = routerRedux
+
 const routes = [
   {
-    path: '/home',
+    path: '/reward',
     models: () => [import(/* webpackChunkName: "chunk-home" */ '../../models/home')],
-    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/home')
+    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/InvideReward')
   },
   {
-    path: '/book',
+    path: '/receive',
     models: () => [import(/* webpackChunkName: "chunk-book" */ '../../models/book')],
-    component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/book')
+    component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/InvideReceive')
   }
 ]
+
 function Main ({ history, app }) {
   return (
     <ConnectedRouter history={history}>
-      <Cover>
+      <InvideCover>
         <Switch>
           {
             routes.map(({ path, ...dynamics }) => (
@@ -39,11 +44,13 @@ function Main ({ history, app }) {
               />
             ))
           }
+          <Redirect to="/reward" />
         </Switch>
-      </Cover>
+      </InvideCover>
     </ConnectedRouter>
   )
 }
+
 Main.propTypes = {
   history: PropTypes.object,
   app: PropTypes.object

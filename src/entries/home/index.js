@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import createMemoryHistory from 'history/createMemoryHistory'
 import dynamic from '../../utils/dynamic'
 import { AppRegistry } from '../common'
-import Cover from '../../layouts/cover'
+import Cover from '../../layouts/HomeCover'
 
 require('./style.less')
 
@@ -19,12 +19,7 @@ const routes = [
   {
     path: '/home',
     models: () => [import(/* webpackChunkName: "chunk-home" */ '../../models/home')],
-    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/home')
-  },
-  {
-    path: '/book',
-    models: () => [import(/* webpackChunkName: "chunk-book" */ '../../models/book')],
-    component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/book')
+    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/Home')
   }
 ]
 
