@@ -1,20 +1,21 @@
 {
-    "message": "success",
-    "data":
-    {
-        "zhuquan_info":
-        {
-            "name": "\u5965\u8feaA3\u8f66\u53cb\u4f1a",
-            "last_day_award": 0.0,
-            "white_cover": "http://p3.pstatp.com/origin/1dd6000416b42619f268",
-            "series_id": 95,
-            "task_desc": "\u4eca\u65e5\u67095\u4e2a\u672a\u5b8c\u6210\u4efb\u52a1\uff0c\u9884\u8ba1\u53ef\u83b725\u5143",
-            "total_award": 0.0
+    "status": "",
+    "prompts": "",
+    "data": {
+        "user_info": {
+            "user_id": ""
         },
-        "hit_award":
-        {
-            "total_award": 2333333,
-            "one_award": 12.12
-        }
-    }
+        "has_expire_prize": "",
+        "score": "",
+        "card_list": {
+            "num": "",
+            "name": "",
+            "score": "",
+            "bgimg": "",
+            "id": "",
+            "desc": ""
+        },
+        "lottery_num": ""
+    },
+    "message": ""
 }

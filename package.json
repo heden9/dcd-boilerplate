@@ -57,6 +57,7 @@
     "webpack-stable-module-id-and-hash": "^1.0.5"
   },
   "dependencies": {
+    "antd-mobile": "^2.1.8",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "dva": "^2.2.3",

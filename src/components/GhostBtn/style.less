@@ -1,0 +1,27 @@
+.cpt-lottery {
+  flex: 1;
+  &::before {
+    border-color: @normal_yellow !important;
+  }
+  font-size: @small_font;
+  color: @normal_yellow;
+  border-radius: 2px;
+  text-overflow: none;
+  height: 30px;
+  line-height: 30px;
+  font-weight: 300;
+  margin-right: 8px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &.am-button-active {
+    color: @normal_yellow;
+    opacity: 0.8;
+  }
+}
+.cpt-lottery-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}

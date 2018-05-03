@@ -6,6 +6,7 @@ import {
   routerRedux
 } from 'dva/router'
 import PropTypes from 'prop-types'
+import createMemoryHistory from 'history/createMemoryHistory'
 import dynamic from '../../utils/dynamic'
 import { AppRegistry } from '../common'
 import Cover from '../../layouts/cover'
@@ -63,6 +64,7 @@ AppRegistry({
       app_version: 320
     }
   },
+  history: createMemoryHistory(),
   gModels: [require('../../models/app')],
   main: Main
 }, __filename)

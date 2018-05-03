@@ -154,7 +154,12 @@ var config = {
                                 ],
                             }
                         },
-                        'less-loader'
+                        {
+                            loader: 'less-loader',
+                            options: {
+                                modifyVars: require('../config/less.vars'),
+                            }
+                        }
                     ]
                 })
             },
