@@ -65,4 +65,4 @@ AppRegistry({
   },
   gModels: [require('../../models/app')],
   main: Main
-}, __dirname)
+}, __filename)
