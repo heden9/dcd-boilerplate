@@ -3,6 +3,7 @@ import HomeBanner from 'Component/HomeBanner'
 import GameBox from 'Component/GameBox'
 import NoticeBar from 'antd-mobile/lib/notice-bar'
 import GhostBtn from 'Component/GhostBtn'
+import Btn from 'Component/Btn'
 import CardBox from './components/CardBox'
 import './style'
 export default class Home extends React.Component {
@@ -23,7 +24,7 @@ export default class Home extends React.Component {
             </NoticeBar>
             <div className="card-container">
               <CardBox/>
-              <a href="" className="lottery-btn">开始抽卡X5</a>
+              <Btn>开始抽卡X5</Btn>
               <GhostBtn.group>
                 <GhostBtn>分享可多抽2张卡</GhostBtn>
                 <GhostBtn>邀请好友可多抽3张卡</GhostBtn>

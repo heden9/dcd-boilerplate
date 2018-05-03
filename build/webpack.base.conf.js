@@ -2,17 +2,18 @@ var path = require('path')
 var fs = require('fs')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
-var px2rem = require('postcss-px2rem')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
-
 var srcPath = path.resolve(__dirname, '../src')
 var assetsPath = path.resolve(srcPath, 'assets')
 var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
-
+var pxtorem = require('postcss-pxtorem')
+var px2px = () => require('postcss-px-adjust')({
+    replace: (match, value, unit) => parseInt(value * 2) + unit, // 注意 👆 此处根据设计稿配置，此处为两倍
+})
 
 var mapConfig = require('../config/src.map.js')
 var devConfig = require('../config/dev.env.js')
@@ -128,7 +129,11 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2rem({ remUnit: 37.5 }),
+                                    px2px(),
+                                    pxtorem({
+                                        rootValue: 100,
+                                        propWhiteList: [],
+                                    }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']}),
                                 ],
                             }
@@ -149,7 +154,11 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2rem({ remUnit: 37.5 }),
+                                    px2px(),
+                                    pxtorem({
+                                        rootValue: 100,
+                                        propWhiteList: [],
+                                    }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
                                 ],
                             }
@@ -176,7 +185,11 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2rem({ remUnit: 37.5 }),
+                                    px2px(),
+                                    pxtorem({
+                                        rootValue: 100,
+                                        propWhiteList: [],
+                                    }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
                                 ],
                             }

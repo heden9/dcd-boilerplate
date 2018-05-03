@@ -6,7 +6,7 @@ import './style'
 const Btn = ({children, onClick, to}) => (
   to
     ? <Link className="cpt-btn" to={to}>{children}</Link>
-    : <a className="cpt-btn">{children}</a>
+    : <a className="cpt-btn" href="javascript:;" onClick={onClick}>{children}</a>
 )
 
 Btn.propTypes = {

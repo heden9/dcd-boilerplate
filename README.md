@@ -1,4 +1,4 @@
- # Get Start
+# Get Start
 
 ## 步骤一：安装依赖必备资源
 ```shell
@@ -31,48 +31,15 @@ $ npm run build
 $ npm run review gengweibiao.fe
 ```
 
-## 项目目录结构及说明
+# Features
 
-```
-.
-├── README.md
-├── build
-│   ├── dev.js
-│   ├── prod.js
-│   ├── webpack.base.conf.js
-│   ├── webpack.dev.conf.js
-│   ├── webpack.prod.conf.js
-│   └── webpack.stage.conf.js
-├── config
-│   ├── dev.env.js
-│   ├── dev.proxy.js
-│   ├── prod.env.js
-│   ├── src.map.js
-│   └── stage.env.js
-├── mock
-│   └── test.json
-├── package.json
-├── scm_build.sh
-├── scm_build_resource.sh
-└── src
-    ├── components
-    │   └── App.js
-    ├── index.html
-    ├── index.js
-    ├── layouts
-    │   └── PageLayout
-    ├── routes
-    │   ├── Counter
-    │   ├── Home
-    │   └── index.js
-    ├── store
-    │   ├── createStore.js
-    │   ├── location.js
-    │   └── reducers.js
-    └── styles
-        ├── _base.scss
-        └── main.scss
-```
+-   全局less变量配置
+-   多template配置
+-   高清方案
+-   动态路由方案，按需model，page
+-   hmr
+
+
 
 ## CSS namespace命名规范
 隶属于component粒度的组件根元素的className命名为 cpt-驼峰转中划线组件名，如 compoents/NavBar 的CSS namespace命名为：cpt-nav-bar
