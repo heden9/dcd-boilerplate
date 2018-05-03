@@ -1717,6 +1717,10 @@ colormin@^1.0.5:
     css-color-names "0.0.4"
     has "^1.0.1"
 
+colors-cli@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.npmjs.org/colors-cli/-/colors-cli-1.0.13.tgz#9222edaba8388511316b08b03d9d596ed34a79bb"
+
 colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -4925,6 +4929,10 @@ path-to-regexp@^1.7.0:
   dependencies:
     isarray "0.0.1"
 
+path-to-regexp@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-2.2.1.tgz#90b617025a16381a879bc82a38d4e8bdeb2bcf45"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -7087,6 +7095,15 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://registry.npmjs.org/wbuf/-/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webpack-api-mocker@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.npmjs.org/webpack-api-mocker/-/webpack-api-mocker-1.4.3.tgz#067ca945b89046e6ffc29b67cc2543835ac4578f"
+  dependencies:
+    body-parser "^1.18.2"
+    colors-cli "^1.0.13"
+    http-proxy "^1.16.2"
+    path-to-regexp "^2.2.1"
 
 webpack-dev-middleware@^1.11.0:
   version "1.12.2"

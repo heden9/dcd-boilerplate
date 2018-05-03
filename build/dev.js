@@ -1,11 +1,14 @@
 var webpack = require('webpack')
 var path = require('path')
 var proxy = require('http-proxy-middleware')
+var apiMocker = require('webpack-api-mocker')
 // var favicon = require('express-favicon')
 
 var config = require('./webpack.dev.conf.js')
 var devenv = require('../config/dev.env.js')
 var devproxy = require('../config/dev.proxy.js')
+var mocker = path.resolve('mock/app.js')
+
 config.devServer = {
   host: '0.0.0.0',
   port: devenv.browserPort,
@@ -25,6 +28,9 @@ config.devServer = {
   // historyApiFallback: { // 让我们所有404的请求都返回这个
   //     index: '/app/index.html'
   // },
+  setup(app) {
+    apiMocker(app, mocker);
+  },
   proxy: {
 
   }

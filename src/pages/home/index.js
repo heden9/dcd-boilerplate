@@ -11,8 +11,8 @@ export default class Home extends React.Component {
     modal1: true
   };
   componentDidMount () {
-
   }
+
   render () {
     return (
       <div>

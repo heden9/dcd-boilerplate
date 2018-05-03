@@ -6,7 +6,7 @@ var proxys = {
         secure: false,
         changeOrigin: true
     },
-    '/motor/red_packet/rain/': {
+    '/motor/pleasure/': {
         // target: 'http://10.11.40.73:9879',
         target: 'http://is.snssdk.com',
         secure: false,

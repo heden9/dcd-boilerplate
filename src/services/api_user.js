@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const fetch = () => {
-  return axios.get('/home')
+  return axios.get('/motor/pleasure/worldcup/index')
 }
 
 export const getData = () => {

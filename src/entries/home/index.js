@@ -22,7 +22,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/Home')
   }
 ]
-
 function Main ({ history, app }) {
   return (
     <ConnectedRouter history={history}>
