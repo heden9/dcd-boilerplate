@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Route,
   Switch,
+  Redirect,
   routerRedux
 } from 'dva/router'
 import PropTypes from 'prop-types'
@@ -44,6 +45,7 @@ function Main ({ history, app }) {
               />
             ))
           }
+          <Redirect to="/home" />
         </Switch>
       </Cover>
     </ConnectedRouter>

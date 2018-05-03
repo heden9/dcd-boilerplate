@@ -3,5 +3,5 @@ module.exports = {
     "renderPort": "9000",
     "publicPath": "/",
     "domain": "/",
-    "autoOpen": "app/index.html"
+    "autoOpen": "home/index.html"
 }

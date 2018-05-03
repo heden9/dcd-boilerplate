@@ -9,18 +9,18 @@ module.exports = {
             "react",
             "react-dom"
         ],
-        app: "src/entries/app/index.js",
-        bpp: "src/entries/bpp/index.js",
+        home: "src/entries/home/index.js",
+        invite: "src/entries/invite/index.js",
     },
     pages: {
-        "app/index.html": {
+        "home/index.html": {
             scripts: {
-                body: [ "vendors", "app" ]
+                body: [ "vendors", "home" ]
             }
         },
-        "bpp/index.html": {
+        "invite/index.html": {
             scripts: {
-                body: [ "vendors", "bpp" ]
+                body: [ "vendors", "invite" ]
             }
         },
     }
