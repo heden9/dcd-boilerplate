@@ -46,8 +46,6 @@
     "nyan-progress-webpack-plugin": "^1.2.0",
     "on-build-webpack": "^0.1.0",
     "postcss-loader": "^2.0.8",
-    "postcss-px-adjust": "^2.0.1",
-    "postcss-px2rem": "^0.3.0",
     "postcss-pxtorem": "^3.3.1",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^4.1.2",

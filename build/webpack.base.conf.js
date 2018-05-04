@@ -11,9 +11,6 @@ var srcPath = path.resolve(__dirname, '../src')
 var assetsPath = path.resolve(srcPath, 'assets')
 var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
 var pxtorem = require('postcss-pxtorem')
-var px2px = () => require('postcss-px-adjust')({
-    replace: (match, value, unit) => parseInt(value * 2) + unit, // 注意 👆 此处根据设计稿配置，此处为两倍
-})
 
 var mapConfig = require('../config/src.map.js')
 var devConfig = require('../config/dev.env.js')
@@ -129,9 +126,8 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2px(),
                                     pxtorem({
-                                        rootValue: 100,
+                                        rootValue: 50,
                                         propWhiteList: [],
                                     }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']}),
@@ -154,9 +150,8 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2px(),
                                     pxtorem({
-                                        rootValue: 100,
+                                        rootValue: 50,
                                         propWhiteList: [],
                                     }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
@@ -185,9 +180,8 @@ var config = {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: [
-                                    px2px(),
                                     pxtorem({
-                                        rootValue: 100,
+                                        rootValue: 50,
                                         propWhiteList: [],
                                     }),
                                     autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
