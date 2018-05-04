@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/receive',
-    models: () => [import(/* webpackChunkName: "chunk-book" */ '../../models/book')],
+    models: () => [],
     component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/InvideReceive')
   }
 ]

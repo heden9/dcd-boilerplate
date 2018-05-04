@@ -6,7 +6,7 @@ import {
   routerRedux
 } from 'dva/router'
 import PropTypes from 'prop-types'
-import createMemoryHistory from 'history/createMemoryHistory'
+// import createMemoryHistory from 'history/createMemoryHistory'
 import dynamic from '../../utils/dynamic'
 import { AppRegistry } from '../common'
 import Cover from '../../layouts/HomeCover'
@@ -20,6 +20,10 @@ const routes = [
     path: '/home',
     models: () => [import(/* webpackChunkName: "chunk-home" */ '../../models/home')],
     component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/Home')
+  },
+  {
+    path: '/lottery',
+    component: () => import(/* webpackChunkName: "chunk-lottery" */ '../../pages/Lottery')
   }
 ]
 function Main ({ history, app }) {
@@ -54,11 +58,8 @@ Main.propTypes = {
 
 AppRegistry({
   initialState: {
-    app: {
-      app_version: 320
-    }
   },
-  history: createMemoryHistory(),
-  gModels: [require('../../models/app')],
+  // history: createMemoryHistory(),
+  gModels: [require('../../models/card')],
   main: Main
 }, __filename)

@@ -1,32 +1,17 @@
 .cpt-game-box {
-  width: 356px;
-  height: 466px;
+  width: 95%;
   margin: 0 auto;
   background: #68BB22;
   position: relative;
   box-shadow: inset 0 1px 3px 0 rgba(68,68,68,0.50);
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px 4px 7px 4px;
   box-sizing: border-box;
   >div{
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    padding-top: 20px;
+    overflow: hidden;
+    padding:0 10px;
+    padding-top: 12px;
     box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10;
-  }
-  &::after {
-    content: "";
-    display: block;
-    width: 97%;
-    height: 97%;
-    position: absolute;
-    top: 1.5%;
-    left: 1.5%;
     background: @deep_green_1;
     box-shadow: 0 4px 4px 0 rgba(16,16,16,0.50), inset 0 1px 3px 0 rgba(68,68,68,0.50);
     border-radius: 10px;
@@ -34,8 +19,8 @@
   .banner {
     position: absolute;
     left: 50%;
-    top: -21px;
-    transform: translateX(-50%);
+    top: 0;
+    transform: translateX(-50%) translateY(-50%);
     z-index: 10;
     width: 63%;
   }

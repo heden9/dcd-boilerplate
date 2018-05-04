@@ -64,6 +64,8 @@
     "babel-polyfill": "^6.26.0",
     "dva": "^2.2.3",
     "history": "^4.7.2",
+    "lodash": "^4.17.10",
+    "mockjs": "^1.0.1-beta3",
     "npm-zepto": "^1.1.7",
     "object-assign": "^4.1.1",
     "promise": "^7.1.1",

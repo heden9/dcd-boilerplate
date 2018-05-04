@@ -23,5 +23,8 @@
   },
   "plugins": [
     "react"
-  ]
+  ],
+  "rules": {
+    "camelcase": [0]
+  }
 }

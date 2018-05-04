@@ -1,9 +1,5 @@
 const proxy = {
-  'GET /motor/pleasure/worldcup/index': {
-    id: 1,
-    username: 'kenny',
-    sex: 6
-  },
+  'GET /motor/pleasure/worldcup/index': require('./home_mock'),
   /**
    * example
    */

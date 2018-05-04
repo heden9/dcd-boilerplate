@@ -1,0 +1,33 @@
+.cpt-card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.cpt-card-0 {
+  margin-bottom: 18px;
+  width: 24%;
+  position: relative;
+  &.showNum {
+    width: 23%
+  }
+  >span {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    color: @deep_green_1;
+    font-size: @normal_font;
+    background: @normal_yellow;
+    z-index: 10;
+    transform: translateX(50%) translateY(-50%);
+  }
+  >img.active {
+    max-width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  }
+}
