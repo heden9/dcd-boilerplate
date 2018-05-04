@@ -7,7 +7,7 @@ const Card = ({ num, showNum }) => {
   return (
     <div className={classNames({
       'cpt-card-0': true,
-      showNum
+      'showNum': showNum
     })}>
       {
         !!num && showNum && <span>{num}</span>

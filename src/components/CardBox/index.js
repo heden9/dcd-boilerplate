@@ -20,7 +20,6 @@ const CardBox = function ({
       >{children}</Carousel>
       : <React.Fragment>{ children }</React.Fragment>
   )
-  console.log(card_list)
   return (
     <div className="card-box">
       <Cover>
@@ -28,7 +27,7 @@ const CardBox = function ({
           <div key={index} className="box-item">
             <Card.container>
               {
-                item.map((item) => <Card key={item.id} {...item} showNum/>)
+                item.map((item) => <Card key={item.id} {...item} showNum={showNum}/>)
               }
             </Card.container>
           </div>

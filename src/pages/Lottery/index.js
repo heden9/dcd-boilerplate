@@ -29,7 +29,10 @@ export default class Lottery extends Component {
           <Btn >全部翻开</Btn>
         </GameBox>
         <GameBox showBanner={false} className="lottery-card-box">
-          <CardBox card_list={card_list}></CardBox>
+          <CardBox
+            showNum
+            card_list={card_list}
+          ></CardBox>
         </GameBox>
       </div>
     )
