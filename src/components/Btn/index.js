@@ -3,10 +3,12 @@ import {Link} from 'dva/router'
 import PropTypes from 'prop-types'
 import './style'
 
-const Btn = ({children, onClick, to}) => (
+const noop = () => {}
+
+const Btn = ({children, onClick = noop, to, ...props}) => (
   to
-    ? <Link className="cpt-btn" to={to}>{children}</Link>
-    : <a className="cpt-btn" href="javascript:;" onClick={onClick}>{children}</a>
+    ? <Link className="cpt-btn" to={to} {...props}>{children}</Link>
+    : <a className="cpt-btn" href="javascript:;" onClick={onClick} {...props}>{children}</a>
 )
 
 Btn.propTypes = {

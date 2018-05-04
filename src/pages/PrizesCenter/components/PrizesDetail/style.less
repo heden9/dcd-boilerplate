@@ -1,0 +1,54 @@
+.cpt-prizes-detail {
+  border-top: 4px solid #68BB22;
+  .prize-info {
+    position: relative;
+    padding: 8px 0;
+    line-height: 1.5;
+    color: @normal_yellow;
+    text-align: center;
+    background: #193900;
+    h1 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+    &:before {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 12px 14px;
+      border-color: transparent transparent #193900;
+    }
+  }
+  .prize-intro {
+    padding: 8px 17px 18px;
+    .intro-title {
+      height: 31px;
+      line-height: 31px;
+      text-align: center;
+      color: @normal_yellow;
+      font-size: 16px;
+      background: #193900;
+      border-radius: 3px;
+    }
+    .intro-content {
+      margin-top: 4px;
+      padding: 20px;
+      color: #FFE20C;
+      font-size: 14px;
+      line-height: 1.43em;
+      text-align: justify;
+      background: #2C6101;
+      border: 4px solid #193900;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(68,68,68,0.50) inset;
+    }
+  }
+}

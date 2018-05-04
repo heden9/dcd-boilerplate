@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import Btn from 'Component/Btn'
+import BackCardGroup from 'Component/BackCardGroup'
 import RewardMsg from './components/RewardMsg'
-import RewardCard from './components/RewardCard'
 import './style'
 
 class InvideReward extends Component {
@@ -9,7 +10,9 @@ class InvideReward extends Component {
       <div className="page-invide-reward">
         <div className="content">
           <RewardMsg />
-          <RewardCard />
+          <BackCardGroup>
+            <Btn to="/receive">全部翻开</Btn>
+          </BackCardGroup>
         </div>
       </div>
     )

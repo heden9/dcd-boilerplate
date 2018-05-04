@@ -1,11 +1,25 @@
 @import "~Assets/styles/normalize.less";
 
-html {
+html, body, #root {
   height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
-
-body {
-  min-height: 100%;
-  background: url(~Assets/images/bg.jpg) center center no-repeat;
-  background-size: cover;
+#root {
+  background: url(~Assets/images/bg.jpg) center center / cover no-repeat;
+}
+// 文字滚动样式
+.am-notice-bar {
+  margin: 0 auto;
+  margin-top: 12px;
+  background: #193900;
+  box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.50);
+  border-radius: 4px;
+  width: 225px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  font-size: @small_font;
+  color: @normal_yellow;
 }

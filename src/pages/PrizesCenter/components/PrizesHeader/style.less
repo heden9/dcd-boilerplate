@@ -1,0 +1,36 @@
+.cpt-prizes-header {
+  position: relative;
+  height: 82px;
+  overflow: hidden;
+  > * {
+    position: absolute;
+  }
+  .title {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 221px;
+    height: 32px;
+    line-height: 32px;
+    color: @normal_yellow;
+    font-size: @big_font;
+    text-align: center;
+    background: #193900;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) inset;
+  }
+  .palace {
+    top: 6px;
+    left: 6px;
+    width: 75px;
+    height: 94px;
+    background: url(~Assets/images/palace.png) center center/contain no-repeat;
+  }
+  .girl {
+    top: 6px;
+    right: -4px;
+    width: 100px;
+    height: 121px;
+    background: url(~Assets/images/girl.png) center center/contain no-repeat;
+  }
+}

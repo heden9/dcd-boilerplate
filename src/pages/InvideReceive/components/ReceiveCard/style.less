@@ -13,5 +13,43 @@
     background: @normal_green;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    .rules {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li {
+        margin: 0 2px;
+        font-size: @normal_font;
+        color: @normal_yellow;
+      }
+      li.arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 5px 12px;
+        border-color: transparent transparent transparent @normal_yellow;
+      }
+    }
+    .card-list {
+      display: block;
+      padding: 30px 0;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      .card {
+        display: inline-block;
+        width: 100px;
+        height: 152px;
+        border-radius: 3px;
+        background: black;
+        &+.card {
+          margin-left: 38px;
+        }
+        &.gold {
+          box-shadow: 0 0 30px yellow;
+        }
+      }
+    }
   }
 }

@@ -11,6 +11,7 @@ module.exports = {
         ],
         home: "src/entries/home/index.js",
         invite: "src/entries/invite/index.js",
+        prizes: "src/entries/prizes/index.js"
     },
     pages: {
         "home/index.html": {
@@ -23,5 +24,10 @@ module.exports = {
                 body: [ "vendors", "invite" ]
             }
         },
+        "prizes/index.html": {
+            scripts: {
+                body: [ "vendors", "prizes"]
+            }
+        }
     }
 }
