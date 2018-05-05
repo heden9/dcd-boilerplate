@@ -6,6 +6,8 @@ import NoticeBar from 'antd-mobile/lib/notice-bar'
 import GameBox from 'Component/GameBox'
 import Btn from 'Component/Btn'
 import CardBox from 'Component/CardBox'
+import BackCardGroup from 'Component/BackCardGroup'
+import CardMask from './components/CardMask'
 import './style'
 // import PropTypes from 'prop-types'
 function mapStateToProps ({ card }) {
@@ -15,10 +17,28 @@ function mapStateToProps ({ card }) {
 }
 @connect(mapStateToProps)
 export default class Lottery extends Component {
+  state = {
+    open: false
+  }
+  openMask = () => {
+    this.setState({
+      open: true
+    })
+  }
+  closeMask = () => {
+    this.setState({
+      open: false
+    })
+  }
   render () {
     const { card_list } = this.props
+    const { open } = this.state
     return (
       <div className="pg-lottery">
+        <CardMask
+          closeHandle={this.closeMask}
+          open={open}
+        />
         <NoticeBar icon="" marqueeProps={{ loop: true }}>
           瑶***3 集卡得到世界杯纪念足球
         </NoticeBar>
@@ -26,7 +46,8 @@ export default class Lottery extends Component {
           <img className="adv-banner" src={require('./images/Page.png')}></img>
         </div>
         <GameBox showBanner={false}>
-          <Btn >全部翻开</Btn>
+          <BackCardGroup />
+          <Btn onClick={this.openMask} >全部翻开</Btn>
         </GameBox>
         <GameBox showBanner={false} className="lottery-card-box">
           <CardBox

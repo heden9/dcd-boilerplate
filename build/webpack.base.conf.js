@@ -11,7 +11,7 @@ var srcPath = path.resolve(__dirname, '../src')
 var assetsPath = path.resolve(srcPath, 'assets')
 var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
 var pxtorem = require('postcss-pxtorem')
-
+var ImageminPlugin = require('imagemin-webpack-plugin').default
 var mapConfig = require('../config/src.map.js')
 var devConfig = require('../config/dev.env.js')
 var prodConfig = require('../config/prod.env.js')
@@ -255,7 +255,12 @@ var config = {
             filename: `js/[name]${__DEV__ ? '' : '_[chunkhash]'}.js`,
             minChunks: Infinity,
         }),
-
+        new ImageminPlugin({
+            disable: __DEV__,
+            pngquant: {
+                quality: '95-100'
+            }
+        }),
         new webpack.HashedModuleIdsPlugin(),  // 优化hash值=>缓存优化
     ]),
     resolve: {

@@ -5,24 +5,27 @@ import 'antd-mobile/lib/carousel/style/css'
 import Card from 'Component/Card'
 import './style'
 
+const Cover = ({ children, isCarousel, ...props }) => ( // eslint-disable-line
+  isCarousel
+    ? <Carousel
+      {...props}
+    >{children}</Carousel>
+    : <React.Fragment>{ children }</React.Fragment>
+)
 const CardBox = function ({
   card_list = [],
   showNum,
   isCarousel
 }) {
-  const Cover = ({ children }) => ( // eslint-disable-line
-    isCarousel
-      ? <Carousel
+  return (
+    <div className="card-box">
+      <Cover
+        isCarousel={isCarousel}
         autoplay={false}
         infinite
         beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
         afterChange={index => console.log('slide to', index)}
-      >{children}</Carousel>
-      : <React.Fragment>{ children }</React.Fragment>
-  )
-  return (
-    <div className="card-box">
-      <Cover>
+      >
         {card_list.map((item, index) => (
           <div key={index} className="box-item">
             <Card.container>

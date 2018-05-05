@@ -6,14 +6,17 @@
 html,
 body {
   background-color: @normal_green;
+  box-sizing: border-box;
+}
+html,body {
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
 }
 
 #root {
+  overflow: hidden;
   min-height: 100%;
-  background: @deep_green_1 url('../../assets/background.png') center center/cover;
+  background: @deep_green_1 url('../../assets/background.png') center center/contain repeat-y;
 }
 
 

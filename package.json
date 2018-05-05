@@ -38,6 +38,7 @@
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
+    "imagemin-webpack-plugin": "^2.1.1",
     "inline-manifest-webpack-plugin": "^3.0.1",
     "less": "^3.0.0-alpha.3",
     "less-loader": "^4.0.5",
