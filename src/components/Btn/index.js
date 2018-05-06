@@ -12,10 +12,10 @@ const Btn = ({children, onClick = noop, to, ...props}) => (
 )
 
 Btn.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
+  // children: PropTypes.oneOfType([
+  //   PropTypes.string,
+  //   PropTypes.object
+  // ]),
   onClick: PropTypes.func,
   to: PropTypes.string
 }

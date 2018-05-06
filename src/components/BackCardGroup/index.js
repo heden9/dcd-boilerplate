@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import './style.less'
 
 const BackCardGroup = ({children}) => (
@@ -16,7 +16,7 @@ const BackCardGroup = ({children}) => (
 )
 
 BackCardGroup.propTypes = {
-  children: PropTypes.object
+  // children: PropTypes.object
 }
 
 export default BackCardGroup

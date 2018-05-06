@@ -20,10 +20,10 @@ const Group = ({ children }) => <div className="cpt-lottery-group">{children}</d
 GhostBtn.group = Group
 
 Group.propTypes = {
-  children: PropTypes.object
+  // children: PropTypes.object
 }
 GhostBtn.propTypes = {
-  children: PropTypes.object,
+  // children: PropTypes.object,
   inline: PropTypes.bool,
   onClick: PropTypes.func
 }

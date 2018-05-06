@@ -3,33 +3,40 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style'
 
-const Card = ({ num, showNum }) => {
+const Card = ({ num, showNum, name }) => {
+  const empty = +num === 0
   return (
     <div className={classNames({
       'cpt-card-0': true,
-      'showNum': showNum
+      'showNum': showNum,
+      empty: empty
     })}>
       {
         !!num && showNum && <span>{num}</span>
       }
-      <div className="active" style={{backgroundImage: `url(${+num === 0 ? require('./images/01.png') : require('./images/02.png')})`}}></div>
+      <div
+        className={'active'}
+        style={{backgroundImage: `url(${empty ? '' : require('./images/02.png')})`}} >
+        { empty && <span>{name}</span>}
+      </div>
     </div>
   )
 }
 const Container = ({ children }) => {
   return <div className="cpt-card-container">{ children }</div>
 }
-const SpecialCard = () => {
+const SpecialCard = ({ type }) => {
   return (
     <div
       className={classNames({
         'card-special': true,
-        'cpt-card': true
+        'cpt-card': true,
+        'gold': type === 1
       })}
     >
       <img
         className="front"
-        src={require('./images/05.png')}
+        src={require('./images/02.png')}
       />
       <img
         className="back"
@@ -39,16 +46,20 @@ const SpecialCard = () => {
   )
 }
 Container.propTypes = {
-  children: PropTypes.object
+  // children: PropTypes.object
 }
-Card.propTypes = {
+SpecialCard.propTypes = Card.propTypes = {
   showNum: PropTypes.bool,
   bgimg: PropTypes.string,
   desc: PropTypes.string,
   id: PropTypes.number,
   name: PropTypes.string,
   score: PropTypes.string,
-  num: PropTypes.number
+  num: PropTypes.number,
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 Card.container = Container
 Card.special = SpecialCard

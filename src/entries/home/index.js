@@ -6,7 +6,7 @@ import {
   routerRedux
 } from 'dva/router'
 import PropTypes from 'prop-types'
-import dynamic from '../../utils/dynamic'
+import dynamic from 'dva/dynamic'
 import { AppRegistry } from '../common'
 import Cover from '../../layouts/HomeCover'
 

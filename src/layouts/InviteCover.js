@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import HomeBanner from 'Component/HomeBanner'
 
 export default function Cover ({ children }) {
@@ -14,5 +14,5 @@ export default function Cover ({ children }) {
 }
 
 Cover.propTypes = {
-  children: PropTypes.object
+  // children: PropTypes.object
 }

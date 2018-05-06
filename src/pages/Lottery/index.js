@@ -12,30 +12,52 @@ import './style'
 // import PropTypes from 'prop-types'
 function mapStateToProps ({ card }) {
   return {
-    card_list: chunk(card.card_list, 8)
+    card_list: chunk(card.card_list, 8),
+    lottery_info: {
+      hasGold: card.lottery_list.some(i => +i.type === 1),
+      list: card.lottery_list
+    }
   }
 }
+// function mapDispatchToProps (dispatch) {
+//   return {
+//     fetchLotteryRes () {
+//       dispatch({ type: 'card/lottery' })
+//     }
+//   }
+// }
 @connect(mapStateToProps)
 export default class Lottery extends Component {
   state = {
     open: false
   }
   openMask = () => {
-    this.setState({
-      open: true
-    })
+    this.props.dispatch({ type: 'card/lottery' })
+      .then((e) => {
+        this.setState({
+          open: true
+        })
+      })
   }
   closeMask = () => {
-    this.setState({
-      open: false
-    })
+    this.props.dispatch({ type: 'card/mixin' })
+      .then(() => {
+        this.setState({
+          open: false
+        })
+      })
+  }
+  componentDidMount () {
+    this.props.dispatch({ type: 'card/fetch' })
   }
   render () {
-    const { card_list } = this.props
+    const { card_list, lottery_info } = this.props
     const { open } = this.state
     return (
       <div className="pg-lottery">
         <CardMask
+          hasGold={lottery_info.hasGold}
+          card_list={lottery_info.list}
           closeHandle={this.closeMask}
           open={open}
         />

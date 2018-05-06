@@ -9,6 +9,25 @@
   margin-bottom: 18px;
   width: 24%;
   position: relative;
+  box-sizing: border-box;
+  &.empty {
+    border: 2px solid #F8F8F8;
+    border-radius: 3px;
+    .active {
+      box-shadow: none;
+      position: relative;
+      overflow: hidden;
+      >span {
+        position: absolute;
+        // white-space: nowrap;
+        font-size: @small_font;
+        color: #1B3701;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
   &.showNum {
     width: 23%
   }
@@ -24,7 +43,7 @@
     font-size: @normal_font;
     background: @normal_yellow;
     z-index: 10;
-    transform: translateX(50%) translateY(-50%);
+    transform: translateX(30%) translateY(-50%);
   }
   >.active {
     max-width: 100%;
@@ -37,7 +56,6 @@
 }
 .card-special {
   width: 109px;
-  box-shadow: 0 0 20px 0 #ffca18;
   position: relative;
   overflow: hidden;
   transform: rotateY(180deg);
@@ -45,6 +63,9 @@
   animation-name: flipInY;
   animation-duration: .5s;
   animation-fill-mode: forwards;
+  &.gold {
+    box-shadow: 0 0 40px 0 #ffca18;
+  }
   &::after {
     content: "";
     display: block;

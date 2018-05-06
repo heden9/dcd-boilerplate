@@ -16,17 +16,18 @@ const CardGroup = ({children, num}) => { // eslint-disable-line
     >{children}</div>
   )
 }
-const arr = new Array(10).fill(0).map((a, b) => b)
-const CardMask = ({ open, closeHandle }) => {
+// const arr = new Array(3).fill(0).map((a, b) => b)
+const CardMask = ({ open, hasGold, closeHandle, card_list = [] }) => {
+  const banner = hasGold ? `url(${require('./images/Gro.png')})` : 'none'
   return (
     open
       ? <Mask closeHandle={closeHandle}>
         <React.Fragment>
-          <div className="adv-banner card-mask-banner" style={{backgroundImage: `url(${require('./images/Gro.png')})`}} />
+          <div className="adv-banner card-mask-banner" style={{backgroundImage: banner}} />
           <ScrollView className="card-scroll-container">
-            <CardGroup num={arr.length}>
+            <CardGroup num={card_list.length}>
               {
-                arr.map(i => <Card.special key={i} />)
+                card_list.map(i => <Card.special key={i.id} {...i} />)
               }
             </CardGroup>
           </ScrollView>
@@ -38,6 +39,7 @@ const CardMask = ({ open, closeHandle }) => {
 }
 CardMask.propTypes = {
   open: PropTypes.bool,
+  hasGold: PropTypes.bool,
   closeHandle: PropTypes.func
 }
 export default CardMask

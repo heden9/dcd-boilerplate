@@ -21,10 +21,10 @@ import "./style";
 // })('modal-open')
 export default class Mask extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ])
+    // children: PropTypes.oneOfType([
+    //   PropTypes.element,
+    //   PropTypes.arrayOf(PropTypes.element)
+    // ])
   };
   constructor() {
     super(...arguments);

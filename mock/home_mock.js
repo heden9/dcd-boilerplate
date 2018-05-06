@@ -14,6 +14,7 @@ module.exports = Mock.mock({
             "score": "100",
             "bgimg": "",
             "id|+1": 1,
+            "type|0-5": 0,
             "desc": ""
         }],
         "lottery_num": 5
