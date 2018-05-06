@@ -18,6 +18,14 @@ export const fetchLotteryRes = () => {
   return axios.post('/motor/pleasure/worldcup/lottery')
 }
 
-export const fetchMyPrizes = () => {
+export const fetchAwardList = () => {
   return axios.get('/motor/pleasure/worldcup/awards/list')
+}
+
+export const fetchPrizeList = () => {
+  return axios.get('/motor/pleasure/worldcup/prize/list')
+}
+
+export const fetchPrizeDetail = () => {
+  return axios.get('/motor/pleasure/worldcup/prize/list')
 }

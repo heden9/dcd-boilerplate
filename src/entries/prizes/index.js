@@ -14,6 +14,6 @@ Main.propTypes = {
 }
 
 AppRegistry({
-  gModels: [require('../../models/app')],
+  gModels: [require('../../models/prizes')],
   main: Main
 }, __dirname)

@@ -4,7 +4,7 @@ import './style'
 
 const defaultNavbar = {
   '奖品中心': '/prizes/',
-  '我的奖品': '#/myprizes'
+  '我的奖品': '#/awards'
 }
 function Navbar ({navbar}) {
   return (

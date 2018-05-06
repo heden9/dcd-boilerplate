@@ -25,9 +25,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "chunk-lottery" */ '../../pages/Lottery')
   },
   {
-    path: '/myprizes',
-    models: () => [import(/* webpackChunkName: "chunk-myprizes" */ '../../models/myprizes')],
-    component: () => import(/* webpackChunkName: "chunk-myprizes" */ '../../pages/MyPrizes')
+    path: '/awards',
+    models: () => [import(/* webpackChunkName: "chunk-award" */ '../../models/awards')],
+    component: () => import(/* webpackChunkName: "chunk-awards" */ '../../pages/Awards')
   }
 ]
 function Main ({ history, app }) {

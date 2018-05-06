@@ -4,21 +4,21 @@ import { connect } from 'dva'
 import PrizeCard from './components/PrizeCard'
 import './style'
 
-function mapStateToProps ({ myprizes }) {
+function mapStateToProps ({ awards }) {
   return {
-    ...myprizes
+    ...awards
   }
 }
 
 @connect(mapStateToProps)
 export default class MyPrizes extends Component {
-  componentDidMount () {
-    this.props.dispatch({ type: 'myprizes/fetch' })
+  componentWillMount () {
+    this.props.dispatch({ type: 'awards/fetch' })
   }
   render () {
     const { award_list } = this.props
     return (
-      <div className="page-my-prizes">
+      <div className="page-awards">
         {
           award_list.map((item, index) => (
             <PrizeCard {...item} key={index} />

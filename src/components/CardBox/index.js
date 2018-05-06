@@ -12,32 +12,34 @@ const Cover = ({ children, isCarousel, ...props }) => ( // eslint-disable-line
     >{children}</Carousel>
     : <React.Fragment>{ children }</React.Fragment>
 )
-const CardBox = function ({
-  card_list = [],
-  showNum,
-  isCarousel
-}) {
-  return (
-    <div className="card-box">
-      <Cover
-        isCarousel={isCarousel}
-        autoplay={false}
-        infinite
-        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-        afterChange={index => console.log('slide to', index)}
-      >
-        {card_list.map((item, index) => (
-          <div key={index} className="box-item">
-            <Card.container>
-              {
-                item.map((item) => <Card key={item.id} {...item} showNum={showNum}/>)
-              }
-            </Card.container>
-          </div>
-        ))}
-      </Cover>
-    </div>
-  )
+class CardBox extends React.Component {
+  componentDidUpdate () {
+    window.dispatchEvent(new Event('resize'))
+  }
+  render () {
+    const {card_list = [], showNum, isCarousel} = this.props
+    return (
+      <div className="card-box">
+        <Cover
+          isCarousel={isCarousel}
+          autoplay={false}
+          infinite
+          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          afterChange={index => console.log('slide to', index)}
+        >
+          {card_list.map((item, index) => (
+            <div key={index} className="box-item">
+              <Card.container>
+                {
+                  item.map((item) => <Card key={item.id} {...item} showNum={showNum}/>)
+                }
+              </Card.container>
+            </div>
+          ))}
+        </Cover>
+      </div>
+    )
+  }
 }
 
 CardBox.propTypes = {

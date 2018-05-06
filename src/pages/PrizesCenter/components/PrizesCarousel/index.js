@@ -1,47 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Carousel from 'antd-mobile/lib/carousel'
 import 'antd-mobile/lib/carousel/style/css'
-import WingBlank from 'antd-mobile/lib/wing-blank'
-import 'antd-mobile/lib/wing-blank/style/css'
 import './style'
 
-class PrizesCarousel extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-  render () {
-    const { list = [], initIndex = 0, onChange } = this.props
-    return (
-      <div className="cpt-prizes-carousel">
-        <WingBlank>
-          <Carousel
-            frameOverflow="visiable"
-            selectedIndex={initIndex}
-            dots={false}
-            cellSpacing={60}
-            slideWidth={0.38}
-            afterChange={onChange}
-          >
-            {
-              list.map((item, index) => (
-                <div className="prizes-card" key={index}>
-                  <img src={require('Assets/images/test_gift.png')} />
-                </div>
-              ))
-            }
-          </Carousel>
-        </WingBlank>
-      </div>
-    )
-  }
+const PrizesCarousel = ({ list = [], slideIndex = 0, afterChange }) => {
+  return (
+    <div className="cpt-prizes-carousel">
+      <Carousel
+        frameOverflow="visiable"
+        selectedIndex={slideIndex}
+        dots={false}
+        cellSpacing={60}
+        slideWidth={0.36}
+        afterChange={afterChange}
+        key={slideIndex}
+      >
+        {
+          list.map((item, index) => (
+            <div className="prizes-card" key={index}>
+              <img
+                src={require('Assets/images/test_gift.png')}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'))
+                }}
+              />
+            </div>
+          ))
+        }
+      </Carousel>
+    </div>
+  )
 }
 
 PrizesCarousel.propTypes = {
   list: PropTypes.array,
-  initIndex: PropTypes.number,
-  onChange: PropTypes.func
+  slideIndex: PropTypes.number,
+  afterChange: PropTypes.func
 }
 
 export default PrizesCarousel
