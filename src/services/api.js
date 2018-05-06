@@ -11,3 +11,7 @@ axios.interceptors.response.use(function (res) {
 export const fetchIndexData = () => {
   return axios.get('/motor/pleasure/worldcup/index')
 }
+
+export const fetchMyPrizes = () => {
+  return axios.get('/motor/pleasure/worldcup/awards/list')
+}

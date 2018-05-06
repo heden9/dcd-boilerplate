@@ -68,6 +68,7 @@
     "iscroll": "^5.2.0",
     "lodash": "^4.17.10",
     "mockjs": "^1.0.1-beta3",
+    "moment": "^2.22.1",
     "npm-zepto": "^1.1.7",
     "object-assign": "^4.1.1",
     "promise": "^7.1.1",

@@ -26,6 +26,7 @@ const routes = [
   },
   {
     path: '/myprizes',
+    models: () => [import(/* webpackChunkName: "chunk-myprizes" */ '../../models/myprizes')],
     component: () => import(/* webpackChunkName: "chunk-myprizes" */ '../../pages/MyPrizes')
   }
 ]

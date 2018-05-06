@@ -2,11 +2,28 @@
   display: flex;
   align-items: center;
   padding: 17px 18px;
-  background: green;
+  color: #2C6101;
   font-size: 14px;
   border-radius: 6px;
+  background-color: #FCD20E;
+  & + .cpt-prize-card {
+    margin-top: 16px;
+  }
+  &.sending {
+    background-color: #FCD20E;
+  }
+  &.unreceived {
+    background-color: #68BB22;
+  }
+  &.overdue {
+    color: #38444C;
+    background-color: #E3E3E3;
+  }
   h3 {
     font-size: 16px;
+  }
+  p {
+    margin-top: 6px;
   }
   .info {
     flex: 1;
