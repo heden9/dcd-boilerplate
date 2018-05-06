@@ -20,8 +20,15 @@
     padding: 14px 0 11px 0;
     .adv-banner {
       width: 248px;
+      overflow: hidden;
       display: block;
       margin: 0 auto;
+      background: url('./images/Page.png') center center/cover no-repeat;
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 19.7%;
+      }
     }
   }
 }

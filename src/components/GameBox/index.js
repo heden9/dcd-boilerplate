@@ -23,6 +23,9 @@ export default class GameBox extends React.Component {
 }
 GameBox.propTypes = {
   showBanner: PropTypes.bool,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   className: PropTypes.string
 }

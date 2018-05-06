@@ -4,12 +4,108 @@
   }
   .card-mask-banner {
     width: 253px;
-    display: block;
     margin: 0 auto;
+    overflow: hidden;
+    display: block;
+    background: url('./images/Gro.png') center center/cover no-repeat;
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 19.7%;
+    }
   }
   .card-scroll-container {
     height: 371px;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    .card-group-type-2 {
+      margin-top: 58px;
+      display: flex;
+      padding: 0 46px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-group-type-3 {
+      margin-top: 93px;
+      display: flex;
+      padding: 0 37px;
+      justify-content: space-between;
+      align-items: center;
+      .cpt-card {
+        width: 85px;
+      }
+    }
+    .card-group-type-5 {
+      margin: 0 auto;
+      margin-top: 65px;
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .cpt-card {
+        width: 85px;
+        margin-bottom: 24px;
+        &:nth-child(2) {
+          margin-top: -40%;
+        }
+        &:nth-child(4) {
+          margin-left: 42.5px;
+        }
+        &:nth-child(5) {
+          margin-right: 42.5px;
+        }
+      }
+    }
+    .card-group-type-7 {
+      margin: 0 auto;
+      margin-top: 16px;
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .cpt-card {
+        width: 85px;
+        margin-bottom: 24px;
+        &:nth-child(1), &:nth-child(6) {
+          margin-left: 42.5px;
+        }
+        &:nth-child(2), &:nth-child(7) {
+          margin-right: 42.5px;
+        }
+      }
+    }
+    .card-group-type-8 {
+      margin: 0 auto;
+      margin-top: 16px;
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .cpt-card {
+        width: 85px;
+        margin-bottom: 24px;
+        &:nth-child(4) {
+          margin-left: 42.5px;
+        }
+        &:nth-child(5) {
+          margin-right: 42.5px;
+        }
+      }
+    }
+    .card-group-type-10 {
+      margin: 0 auto;
+      margin-top: 16px;
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .cpt-card {
+        width: 85px;
+        margin-bottom: 24px;
+      }
+    }
   }
 }

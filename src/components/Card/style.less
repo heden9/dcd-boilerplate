@@ -26,8 +26,54 @@
     z-index: 10;
     transform: translateX(50%) translateY(-50%);
   }
-  >img.active {
+  >.active {
     max-width: 100%;
+    padding-bottom: 147%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+  }
+}
+.card-special {
+  width: 109px;
+  box-shadow: 0 0 20px 0 #ffca18;
+  position: relative;
+  overflow: hidden;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  animation-name: flipInY;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 152%;
+  }
+  >img {
+    display: block;
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+  }
+  >.front {
+  }
+  >.back {
+    transform:rotateY(180deg) translateZ(1px);
+  }
+}
+@keyframes flipInY {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
   }
 }

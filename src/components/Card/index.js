@@ -12,24 +12,34 @@ const Card = ({ num, showNum }) => {
       {
         !!num && showNum && <span>{num}</span>
       }
-      {
-        +num === 0
-          ? <img className="active" src={require('./images/01.png')} />
-          : <img className="active" src={require('./images/02.png')} />
-      }
+      <div className="active" style={{backgroundImage: `url(${+num === 0 ? require('./images/01.png') : require('./images/02.png')})`}}></div>
     </div>
   )
 }
 const Container = ({ children }) => {
   return <div className="cpt-card-container">{ children }</div>
 }
-
+const SpecialCard = () => {
+  return (
+    <div
+      className={classNames({
+        'card-special': true,
+        'cpt-card': true
+      })}
+    >
+      <img
+        className="front"
+        src={require('./images/05.png')}
+      />
+      <img
+        className="back"
+        src={require('./images/01.png')}
+      />
+    </div>
+  )
+}
 Container.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-    PropTypes.string
-  ])
+  children: PropTypes.object
 }
 Card.propTypes = {
   showNum: PropTypes.bool,
@@ -41,4 +51,5 @@ Card.propTypes = {
   num: PropTypes.number
 }
 Card.container = Container
+Card.special = SpecialCard
 export default Card

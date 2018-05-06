@@ -12,5 +12,5 @@ export default function Cover ({ children }) {
 }
 
 Cover.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.object
 }

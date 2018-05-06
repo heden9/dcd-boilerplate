@@ -16,7 +16,7 @@ const BackCardGroup = ({children}) => (
 )
 
 BackCardGroup.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.object
 }
 
 export default BackCardGroup

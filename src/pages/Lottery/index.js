@@ -43,7 +43,8 @@ export default class Lottery extends Component {
           瑶***3 集卡得到世界杯纪念足球
         </NoticeBar>
         <div className="lottery-banner">
-          <img className="adv-banner" src={require('./images/Page.png')}></img>
+          <div className="adv-banner">
+          </div>
         </div>
         <GameBox showBanner={false}>
           <BackCardGroup />
