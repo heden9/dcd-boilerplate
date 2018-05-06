@@ -1,11 +1,12 @@
+/* eslint-disable */
 import React from 'react'
 import './style'
 
-const navbar = {
-  '奖品中心': '',
-  '我的奖品': ''
+const defaultNavbar = {
+  '奖品中心': '/prizes/',
+  '我的奖品': '#/myprizes'
 }
-function Navbar () {
+function Navbar ({navbar}) {
   return (
     <div className="navbar">
       <img className="logo" src={require('./images/logo@3x.png')} />
@@ -19,11 +20,10 @@ function Navbar () {
     </div>
   )
 }
-export default function HomeBanner () {
+export default function HomeBanner ({navbar = defaultNavbar}) {
   return (
     <div className="cpt-home-banner">
-      <Navbar/>
-
+      <Navbar navbar={ navbar } />
     </div>
   )
 }

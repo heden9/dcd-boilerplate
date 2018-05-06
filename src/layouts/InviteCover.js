@@ -3,9 +3,12 @@ import React from 'react'
 import HomeBanner from 'Component/HomeBanner'
 
 export default function Cover ({ children }) {
+  const navbar = {
+    '奖品中心': '/prizes/'
+  }
   return (
     <React.Fragment>
-      <HomeBanner />
+      <HomeBanner navbar={navbar} />
       {
         children
       }

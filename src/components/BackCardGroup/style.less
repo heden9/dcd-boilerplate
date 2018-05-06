@@ -8,14 +8,19 @@
   }
   .card {
     display: inline-block;
-    width: 132px;
-    height: 209px;
+    width: 39%;
     background: url(~Assets/images/card_back.png) center no-repeat;
     background-size: cover;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-top: 158%;
+    }
     +.card {
-      margin-left: -96px;
+      margin-left: -26%;
     }
   }
 }
