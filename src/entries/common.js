@@ -3,6 +3,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import '../utils/normalize'
+import '../utils/fastclick'
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function () {
+    window.FastClick.attach(document.body)
+  }, false)
+}
 /**
  * @param {Element} params.main
  * @param {Array} params.gModels

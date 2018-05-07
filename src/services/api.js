@@ -17,6 +17,9 @@ export const fetchIndexData = () => {
 export const fetchLotteryRes = () => {
   return axios.post('/motor/pleasure/worldcup/lottery')
 }
+export const fetchCompositeRes = () => {
+  return axios.post('/motor/pleasure/worldcup/call')
+}
 
 export const fetchAwardList = () => {
   return axios.get('/motor/pleasure/worldcup/awards/list')

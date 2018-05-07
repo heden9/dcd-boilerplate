@@ -5,27 +5,21 @@ import chunk from 'lodash/chunk'
 import NoticeBar from 'antd-mobile/lib/notice-bar'
 import GameBox from 'Component/GameBox'
 import Btn from 'Component/Btn'
+import GhostBtn from 'Component/GhostBtn'
 import CardBox from 'Component/CardBox'
 import BackCardGroup from 'Component/BackCardGroup'
 import CardMask from './components/CardMask'
 import './style'
-// import PropTypes from 'prop-types'
 function mapStateToProps ({ card }) {
   return {
     card_list: chunk(card.card_list, 8),
+    lottery_num: card.lottery_num,
     lottery_info: {
       hasGold: card.lottery_list.some(i => +i.type === 1),
       list: card.lottery_list
     }
   }
 }
-// function mapDispatchToProps (dispatch) {
-//   return {
-//     fetchLotteryRes () {
-//       dispatch({ type: 'card/lottery' })
-//     }
-//   }
-// }
 @connect(mapStateToProps)
 export default class Lottery extends Component {
   state = {
@@ -46,12 +40,15 @@ export default class Lottery extends Component {
           open: false
         })
       })
+      .then(() => {
+        this.props.dispatch({type: 'card/checkGatherOver'})
+      })
   }
   componentDidMount () {
     this.props.dispatch({ type: 'card/fetch' })
   }
   render () {
-    const { card_list, lottery_info } = this.props
+    const { card_list, lottery_info, lottery_num } = this.props
     const { open } = this.state
     return (
       <div className="pg-lottery">
@@ -69,8 +66,18 @@ export default class Lottery extends Component {
           </div>
         </div>
         <GameBox showBanner={false}>
-          <BackCardGroup />
-          <Btn onClick={this.openMask} >全部翻开</Btn>
+          {
+            +lottery_num !== 0
+              ? <React.Fragment>
+                <BackCardGroup />
+                <Btn onClick={this.openMask} >全部翻开X{lottery_num}</Btn>
+              </React.Fragment>
+              : <React.Fragment>
+                <div className="empty-logo"/>
+                <GhostBtn inline={false}>分享可多抽2张卡</GhostBtn>
+                <GhostBtn inline={false}>邀请好友可多抽3张卡</GhostBtn>
+              </React.Fragment>
+          }
         </GameBox>
         <GameBox showBanner={false} className="lottery-card-box">
           <CardBox

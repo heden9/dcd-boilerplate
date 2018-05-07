@@ -16,6 +16,11 @@ class CardBox extends React.Component {
   componentDidUpdate () {
     window.dispatchEvent(new Event('resize'))
   }
+  componentDidMount () {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'))
+    }, 0)
+  }
   render () {
     const {card_list = [], showNum, isCarousel} = this.props
     return (

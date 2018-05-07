@@ -4,7 +4,7 @@
   }
   .cpt-btn{
     margin-top: 11px;
-    width: 309px;
+    width: 89%;
     margin-bottom: 17px;
   }
   .lottery-card-box {
@@ -29,6 +29,29 @@
         display: block;
         padding-bottom: 19.7%;
       }
+    }
+  }
+  .empty-logo {
+    width: 78.6%;
+    margin: 86.4px auto 43.5px;
+    background: url('./images/empty.png') center center/contain no-repeat;
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 20.3%;
+    }
+  }
+  .cpt-lottery {
+    width: 78.6%;
+    margin: 0 auto 15px;
+    height: 35px;
+    line-height: 35px;
+    // &::before {
+    //   border-radius: 2px;
+    // }
+    font-size: @normal_font;
+    &:last-child {
+      margin-bottom: 20px;
     }
   }
 }
