@@ -1,21 +1,16 @@
 import React from 'react'
 import './style'
 
-const PrizesDetail = () => (
+const PrizesDetail = ({ detail: {prize = {}, num = 0, activity_time} }) => (
   <div className="cpt-prizes-detail">
     <div className="prize-info">
-      <h1>2018年世界杯吉祥物扎比瓦卡</h1>
-      <p>2人已兑换 | 活动时间:2018.5.14-2018.7.15</p>
+      <h1>{prize.desc}</h1>
+      <p>{num}人已兑换 | 活动时间:{activity_time}</p>
     </div>
     <div className="prize-intro">
       <div className="intro-title">商品介绍</div>
       <div className="intro-content">
-        商品介绍商品介绍商品介绍商品介绍商品介绍
-        商品介绍商品介绍商品介绍商品介绍商品介绍
-        商品介绍商品介绍商品介绍商品介绍商品介绍
-        商品介绍商品介绍商品介绍商品介绍商品介绍
-        商品介绍商品介绍商品介绍商品介绍商品介绍
-        商品介绍商品介绍商品介绍商品介绍商品介绍
+        {prize.detail}
       </div>
     </div>
   </div>

@@ -16,12 +16,10 @@ const { ConnectedRouter } = routerRedux
 const routes = [
   {
     path: '/reward',
-    models: () => [import(/* webpackChunkName: "chunk-home" */ '../../models/home')],
     component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/InvideReward')
   },
   {
     path: '/receive',
-    models: () => [],
     component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/InvideReceive')
   }
 ]
@@ -57,6 +55,6 @@ Main.propTypes = {
 }
 
 AppRegistry({
-  gModels: [require('../../models/app')],
+  gModels: [require('../../models/invite'), require('../../models/notice')],
   main: Main
 }, __dirname)

@@ -4,23 +4,23 @@ import Carousel from 'antd-mobile/lib/carousel'
 import 'antd-mobile/lib/carousel/style/css'
 import './style'
 
-const PrizesCarousel = ({ list = [], slideIndex = 0, afterChange }) => {
+const PrizesCarousel = ({ list = [], initIndex = 0, afterChange }) => {
   return (
     <div className="cpt-prizes-carousel">
       <Carousel
         frameOverflow="visiable"
-        selectedIndex={slideIndex}
+        selectedIndex={initIndex}
         dots={false}
         cellSpacing={60}
         slideWidth={0.36}
         afterChange={afterChange}
-        key={slideIndex}
+        key={initIndex}
       >
         {
           list.map((item, index) => (
             <div className="prizes-card" key={index}>
               <img
-                src={require('Assets/images/test_gift.png')}
+                src={item.bgimg}
                 onLoad={() => {
                   window.dispatchEvent(new Event('resize'))
                 }}
@@ -35,7 +35,7 @@ const PrizesCarousel = ({ list = [], slideIndex = 0, afterChange }) => {
 
 PrizesCarousel.propTypes = {
   list: PropTypes.array,
-  slideIndex: PropTypes.number,
+  initIndex: PropTypes.number,
   afterChange: PropTypes.func
 }
 

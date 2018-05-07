@@ -24,10 +24,12 @@ const routes = [
   },
   {
     path: '/lottery',
+    needLogin: false,
     component: () => import(/* webpackChunkName: "chunk-lottery" */ '../../pages/Lottery')
   },
   {
     path: '/awards',
+    needLogin: false,
     models: () => [import(/* webpackChunkName: "chunk-award" */ '../../models/awards')],
     component: () => import(/* webpackChunkName: "chunk-awards" */ '../../pages/Awards')
   },
@@ -69,6 +71,6 @@ Main.propTypes = {
 AppRegistry({
   initialState: {
   },
-  gModels: [require('../../models/card')],
+  gModels: [require('../../models/card'), require('../../models/notice')],
   main: Main
 }, __filename)

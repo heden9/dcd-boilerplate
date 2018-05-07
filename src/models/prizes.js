@@ -21,14 +21,29 @@ export default {
       yield put({ type: 'save', payload: data })
     },
     * fetchDetail ({ payload }, { call, put }) {
-      const { data } = yield call(fetchPrizeDetail)
-      console.log(data)
+      const { id, type, sub_type } = payload
+      const { data } = yield call(fetchPrizeDetail, type, sub_type)
+      yield put({
+        type: 'saveDetails',
+        payload: {
+          [id]: data
+        }
+      })
     }
   },
 
   reducers: {
     save (state, action) {
       return { ...state, ...action.payload }
+    },
+    saveDetails (state, action) {
+      return {
+        ...state,
+        details: {
+          ...state.details,
+          ...action.payload
+        }
+      }
     }
   }
 }

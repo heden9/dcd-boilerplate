@@ -4,7 +4,7 @@ module.exports = Mock.mock({
     "prompts": "",
     "data": {
         "user_info": {
-            "user_id": '100000'
+            "user_id": undefined
         },
         "has_expire_prize": 5,
         "score": 100,

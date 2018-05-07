@@ -4,7 +4,7 @@ import chunk from 'lodash/chunk'
 import { connect } from 'dva'
 import HomeBanner from 'Component/HomeBanner'
 import GameBox from 'Component/GameBox'
-import NoticeBar from 'antd-mobile/lib/notice-bar'
+import Notice from 'Component/Notice'
 import GhostBtn from 'Component/GhostBtn'
 import Btn from 'Component/Btn'
 import CardBox from 'Component/CardBox'
@@ -52,9 +52,7 @@ export default class Home extends React.Component {
         <HomeBanner />
         <GameBox>
           <div className="home-box">
-            <NoticeBar icon="" marqueeProps={{ loop: true }}>
-              瑶***3 集卡得到世界杯纪念足球
-            </NoticeBar>
+            <Notice />
             <div className="card-container">
               {
                 gatherOver
