@@ -41,6 +41,7 @@ export default class Mask extends Component {
   }
   componentWillUnmount() {
     // ModalHelper.beforeClose()
+    this.node.parentNode.removeChild(this.node)
   }
   closeHandle = () => {
     this.props.closeHandle()
