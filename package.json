@@ -64,6 +64,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "dva": "^2.2.3",
+    "dva-loading": "^2.0.1",
     "history": "^4.7.2",
     "iscroll": "^5.2.0",
     "lodash": "^4.17.10",

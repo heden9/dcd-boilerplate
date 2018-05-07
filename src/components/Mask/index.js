@@ -26,6 +26,9 @@ export default class Mask extends Component {
     //   PropTypes.arrayOf(PropTypes.element)
     // ])
   };
+  static defaultProps = {
+    closeHandle: () => {}
+  }
   constructor() {
     super(...arguments);
 
@@ -38,13 +41,20 @@ export default class Mask extends Component {
   }
   componentWillUnmount() {
     // ModalHelper.beforeClose()
+  }
+  closeHandle = () => {
+    this.props.closeHandle()
     this.node.parentNode.removeChild(this.node)
   }
   render() {
-    const { children, closeHandle } = this.props;
+    const { children, closeBtn } = this.props;
     return ReactDOM.createPortal(
       <React.Fragment>
-        <div className="mask" ></div>
+        <div className="mask" >
+          {
+            closeBtn && <a href="javascript:;" onClick={this.closeHandle} className="m-act-del"/>
+          }
+        </div>
         <div className="dialog can-scroll">{children}</div>
       </React.Fragment>,
       this.node

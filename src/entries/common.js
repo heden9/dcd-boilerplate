@@ -1,6 +1,7 @@
 import dva from 'dva'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import createLoading from 'dva-loading'
 import { AppContainer } from 'react-hot-loader'
 import '../utils/normalize'
 import '../utils/fastclick'
@@ -17,7 +18,12 @@ if ('addEventListener' in document) {
 export function AppRegistry (params, hotPath) {
   function init () {
     const { gModels: models, main, ...args } = params
-    const app = dva(args)
+    const app = dva({
+      ...args,
+      ...createLoading({
+        effects: true
+      })
+    })
     const router = main.default || main
     models.forEach(m => {
       app.model(m.default || m)

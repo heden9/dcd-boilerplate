@@ -10,36 +10,38 @@ import CardBox from 'Component/CardBox'
 import BackCardGroup from 'Component/BackCardGroup'
 import CardMask from './components/CardMask'
 import './style'
-function mapStateToProps ({ card }) {
+function mapStateToProps ({ card, loading }) {
   return {
     card_list: chunk(card.card_list, 8),
     lottery_num: card.lottery_num,
     lottery_info: {
       hasGold: card.lottery_list.some(i => +i.type === 1),
       list: card.lottery_list
-    }
+    },
+    open: !!card.lottery_list.length,
+    loading: loading.effects['card/lottery']
   }
 }
 @connect(mapStateToProps)
 export default class Lottery extends Component {
-  state = {
-    open: false
-  }
+  // state = {
+  //   open: false
+  // }
   openMask = () => {
     this.props.dispatch({ type: 'card/lottery' })
-      .then((e) => {
-        this.setState({
-          open: true
-        })
-      })
+    // .then((e) => {
+    //   this.setState({
+    //     open: true
+    //   })
+    // })
   }
   closeMask = () => {
     this.props.dispatch({ type: 'card/mixin' })
-      .then(() => {
-        this.setState({
-          open: false
-        })
-      })
+      // .then(() => {
+      //   this.setState({
+      //     open: false
+      //   })
+      // })
       .then(() => {
         this.props.dispatch({type: 'card/checkGatherOver'})
       })
@@ -48,8 +50,8 @@ export default class Lottery extends Component {
     this.props.dispatch({ type: 'card/fetch' })
   }
   render () {
-    const { card_list, lottery_info, lottery_num } = this.props
-    const { open } = this.state
+    const { card_list, lottery_info, lottery_num, loading, open } = this.props
+    // const { open } = this.state
     return (
       <div className="pg-lottery">
         <CardMask
@@ -70,7 +72,7 @@ export default class Lottery extends Component {
             +lottery_num !== 0
               ? <React.Fragment>
                 <BackCardGroup />
-                <Btn onClick={this.openMask} >全部翻开X{lottery_num}</Btn>
+                <Btn onClick={this.openMask} >{ loading ? '抽卡中...' : `全部翻开X${lottery_num}` }</Btn>
               </React.Fragment>
               : <React.Fragment>
                 <div className="empty-logo"/>

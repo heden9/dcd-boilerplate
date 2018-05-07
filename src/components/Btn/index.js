@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import './style'
 
 const noop = () => {}
-
+(new Image()).src = require('./images/btn_active.png')
 const Btn = ({children, onClick = noop, to, ...props}) => (
   to
     ? <Link className="cpt-btn" to={to} {...props}>{children}</Link>

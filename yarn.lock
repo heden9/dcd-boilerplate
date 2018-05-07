@@ -2738,6 +2738,12 @@ dva-core@^1.2.1:
     redux-saga "^0.16.0"
     warning "^3.0.0"
 
+dva-loading@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/dva-loading/-/dva-loading-2.0.1.tgz#01b84998918f1a9cd6329677dbb9cc60292cb15e"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.34"
+
 dva@^2.2.3:
   version "2.2.3"
   resolved "https://registry.npmjs.org/dva/-/dva-2.2.3.tgz#9b452c080c6988f192f3b4d6b2f1ea44fa4d97de"

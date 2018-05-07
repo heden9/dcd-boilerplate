@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router'
 import { delay } from 'dva/saga'
-import { fetchIndexData, fetchLotteryRes, fetchCompositeRes } from '../services/api'
+import { fetchIndexData, fetchLotteryRes, fetchCompositeRes, ImgLoader } from '../services/api'
 export default {
 
   namespace: 'card',
@@ -33,7 +33,8 @@ export default {
         lottery_list: data.card_list,
         lottery_num: lottery_num > 0 ? lottery_num - 1 : 0
       }
-      console.log(res)
+      yield call(ImgLoader, res.lottery_list.concat(require('Assets/images/card_back.png')), (item) => item.bgimg || item)
+      yield delay(1000)
       yield put({ type: 'save', payload: res })
     },
     * mixin ({ payload }, { call, put, select }) {
@@ -42,19 +43,35 @@ export default {
         sum[i.id - 1].num += i.num
         return sum
       }, card_list.slice())
-      yield put({ type: 'save', payload: { card_list: nextCardList } })
+      yield put({ type: 'save', payload: { card_list: nextCardList, lottery_list: [] } })
     },
     * checkGatherOver ({ payload }, { call, put, select }) {
       const { card_list } = yield select(_ => _.card)
       const isOver = !card_list.some(i => +i.num === 0)
       if (!isOver) {
-        // yield delay(1000)
-        yield put(routerRedux.push('/home/over'))
+        yield put(routerRedux.push({
+          pathname: '/home',
+          state: {
+            over: true
+          }
+        }))
         const { data } = yield call(fetchCompositeRes)
         console.log(data)
         yield delay(1000)
         if (data.bingo) {
-          yield put(routerRedux.push('/home'))
+          yield put(routerRedux.replace({
+            pathname: '/home',
+            state: {
+              award: data.award
+            }
+          }))
+        } else {
+          yield put(routerRedux.replace({
+            pathname: '/sorry',
+            state: {
+              list: data.card_list
+            }
+          }))
         }
       }
     }

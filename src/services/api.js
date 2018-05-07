@@ -10,7 +10,24 @@ axios.interceptors.response.use(function (res) {
   Toast.fail('接口异常....')
   return Promise.reject(error)
 })
-
+function imgPromisify (src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.src = src
+    img.onload = () => {
+      resolve(src)
+    }
+    img.onerror = () => {
+      resolve()
+    }
+  })
+}
+const noop = (...arg) => arg
+export function ImgLoader (imgList = [], cb = noop) {
+  const img = imgList.map((...arg) => imgPromisify(cb(...arg))) // eslint-disable-line
+  return Promise.all(img)
+    .then(res => console.log(res))
+}
 export const fetchIndexData = () => {
   return axios.get('/motor/pleasure/worldcup/index')
 }

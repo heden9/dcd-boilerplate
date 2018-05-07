@@ -2,8 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style'
-
-const Card = ({ num, showNum, name }) => {
+const Card = ({ num, showNum, name, bgimg }) => {
   const empty = +num === 0
   return (
     <div className={classNames({
@@ -16,7 +15,7 @@ const Card = ({ num, showNum, name }) => {
       }
       <div
         className={'active'}
-        style={{backgroundImage: `url(${empty ? '' : require('./images/02.png')})`}} >
+        style={{backgroundImage: `url(${empty ? '' : bgimg})`}} >
         { empty && <span>{name}</span>}
       </div>
     </div>
@@ -25,7 +24,7 @@ const Card = ({ num, showNum, name }) => {
 const Container = ({ children }) => {
   return <div className="cpt-card-container">{ children }</div>
 }
-const SpecialCard = ({ type }) => {
+const SpecialCard = ({ type, bgimg }) => {
   return (
     <div
       className={classNames({
@@ -36,11 +35,11 @@ const SpecialCard = ({ type }) => {
     >
       <img
         className="front"
-        src={require('./images/02.png')}
+        src={bgimg}
       />
       <img
         className="back"
-        src={require('./images/01.png')}
+        src={require('Assets/images/card_back.png')}
       />
     </div>
   )
