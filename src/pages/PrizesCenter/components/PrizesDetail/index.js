@@ -9,8 +9,9 @@ const PrizesDetail = ({ detail: {prize = {}, num = 0, activity_time} }) => (
     </div>
     <div className="prize-intro">
       <div className="intro-title">商品介绍</div>
-      <div className="intro-content">
-        {prize.detail}
+      <div className="intro-content"
+        dangerouslySetInnerHTML={{__html: prize.detail}}
+      >
       </div>
     </div>
   </div>

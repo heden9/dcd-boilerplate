@@ -33,7 +33,6 @@ export default class PrizesCenter extends Component {
       nextProps.dispatch({
         type: 'prizes/fetchDetail',
         payload: {
-          id: initIndex,
           ...prize_list[initIndex]
         }
       })
@@ -48,12 +47,11 @@ export default class PrizesCenter extends Component {
 
   onCarouselChange (index) {
     const {details, prize_list} = this.props
-    if (!details[index]) {
-      console.log(index)
+    const id = prize_list[index].id
+    if (!details[id]) {
       this.props.dispatch({
         type: 'prizes/fetchDetail',
         payload: {
-          id: index,
           ...prize_list[index]
         }
       })
@@ -63,6 +61,8 @@ export default class PrizesCenter extends Component {
   render () {
     const {details} = this.props
     const {prize_list, slideIndex, initIndex} = this.state
+    const prize = prize_list[slideIndex] || {}
+    const prizeDetail = details[prize.id] || {}
     return (
       <div className="page-prizes-center">
         <PrizesHeader />
@@ -71,7 +71,7 @@ export default class PrizesCenter extends Component {
           initIndex={initIndex}
           afterChange={this.onCarouselChange}
         />
-        <PrizesDetail detail={details[slideIndex] || {}} />
+        <PrizesDetail detail={prizeDetail} />
       </div>
     )
   }

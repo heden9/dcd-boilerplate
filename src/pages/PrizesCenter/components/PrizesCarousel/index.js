@@ -9,6 +9,7 @@ const PrizesCarousel = ({ list = [], initIndex = 0, afterChange }) => {
     <div className="cpt-prizes-carousel">
       <Carousel
         frameOverflow="visiable"
+        infinite={false}
         selectedIndex={initIndex}
         dots={false}
         cellSpacing={60}

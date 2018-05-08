@@ -17,12 +17,12 @@ export default {
   effects: {
     * fetchList ({ payload }, { call, put }) {
       const { data } = yield call(fetchPrizeList)
-      console.log(data)
-      yield put({ type: 'save', payload: data })
+      const prize_list = data.prize_list.filter(item => item.id !== 'no')
+      yield put({ type: 'save', payload: {prize_list} })
     },
     * fetchDetail ({ payload }, { call, put }) {
-      const { id, type, sub_type } = payload
-      const { data } = yield call(fetchPrizeDetail, type, sub_type)
+      const { id } = payload
+      const { data } = yield call(fetchPrizeDetail, id)
       yield put({
         type: 'saveDetails',
         payload: {

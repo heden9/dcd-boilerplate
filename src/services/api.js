@@ -49,13 +49,11 @@ export const fetchAwardList = () => {
 }
 
 export const fetchPrizeList = () => {
-  return axios.get('/motor/pleasure/worldcup/prize/list')
+  return axios.get('/motor/pleasure/worldcup/prize')
 }
 
-export const fetchPrizeDetail = (type, sub_type) => {
-  return axios.get('/motor/pleasure/worldcup/prize/detail', {
-    params: { type, sub_type }
-  })
+export const fetchPrizeDetail = (id) => {
+  return axios.get(`/motor/pleasure/worldcup/prize/${id}`)
 }
 
 export const fetchInviteRes = (from_user_id) => {
