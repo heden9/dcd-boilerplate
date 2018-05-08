@@ -32,6 +32,7 @@ export default {
     },
     * lottery ({ payload }, { call, put, select }) {
       const { data } = yield call(fetchLotteryRes)
+      // const { lottery_num } = yield select(_ => _.card)
       const res = {
         ad_owner: data.ad_owner,
         lottery_list: data.card_list,
@@ -44,7 +45,7 @@ export default {
     * mixin ({ payload }, { call, put, select }) {
       const { lottery_list, card_list } = yield select(_ => _.card)
       const nextCardList = lottery_list.reduce((sum, i) => {
-        sum[i.id - 1].num += i.num
+        sum[i.id - 1].num += 1
         return sum
       }, card_list.slice())
       yield put({ type: 'save', payload: { card_list: nextCardList, lottery_list: [] } })
@@ -52,7 +53,7 @@ export default {
     * checkGatherOver ({ payload }, { call, put, select }) {
       const { card_list } = yield select(_ => _.card)
       const isOver = !card_list.some(i => +i.num === 0)
-      if (!isOver) {
+      if (isOver) {
         yield put(routerRedux.push({
           pathname: '/home',
           state: {

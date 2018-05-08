@@ -2,18 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import chunk from 'lodash/chunk'
 import { connect } from 'dva'
-import { routerRedux } from 'dva/router'
-import login from 'Util/login'
-import { os, browser } from 'Util/ua'
-import { initWechatShare, setWechatShare } from 'Util/wechat'
+
 import HomeBanner from 'Component/HomeBanner'
 import GameBox from 'Component/GameBox'
 import Notice from 'Component/Notice'
 import GhostBtn from 'Component/GhostBtn'
 import Btn from 'Component/Btn'
 import CardBox from 'Component/CardBox'
-import ShareMask from 'Component/ShareMask'
 import AwardMask from './components/AwardMask'
+import ShareHOC from 'Component/ShareHOC'
 import './style'
 
 const CompositeCard = () => {
@@ -33,86 +30,30 @@ function mapStateToProps ({ card }, { location }) {
       ...card,
       card_list: chunk(card.card_list, 8)
     },
+    user_info: card.user_info,
     isLogin: card.user_info && card.user_info.user_id,
     gatherOver: location.state && location.state.over,
     award: location.state && location.state.award
   }
 }
+const noop = () => {}
 
 @connect(mapStateToProps)
-export default class Home extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      mask: false
-    }
-    this.shareData = {
-      title: '标题',
-      desc: '描述',
-      image: 'http://s3.pstatp.com/motor/fe/m_web/image/icon_b20643c1e72d93179f6ff6e3e33e2ab0.png',
-      url: 'http://m.zjurl.cn/motor/growthactivity/worldcup2018/home/'
-    }
-    this.onShareMaskClose = this.onShareMaskClose.bind(this)
-    this.onStartClick = this.loginEnhance(this.onStartClick).bind(this)
-    this.onShareClick = this.loginEnhance(this.onShareClick).bind(this)
-    this.onInviteClick = this.loginEnhance(this.onInviteClick).bind(this)
+@ShareHOC
+class Home extends React.Component {
+  static defaultProps = {
+    onShareClick: noop,
+    onInviteClick: noop
   }
   componentDidMount () {
     if (!this.props.gatherOver) {
       this.props.dispatch({ type: 'card/fetch' })
     }
-    if (browser.weixin) {
-      initWechatShare(this.shareData)
-    }
-  }
-  loginEnhance (func) {
-    const that = this
-    return function () {
-      if (that.props.isLogin) {
-        return func.apply(this, [].slice.call(arguments, 0))
-      } else {
-        login(() => {
-          that.props.dispatch({ type: 'card/fetch' })
-        })
-      }
-    }
-  }
-  onStartClick () {
-    this.props.dispatch(routerRedux.push({
-      pathname: '/lottery'
-    }))
-  }
-  onShareClick () {
-    this.triggerShare(this.shareData)
-  }
-  onInviteClick () {
-    const {user_info = {}} = this.props.info
-    if (user_info.user_id) {
-      this.shareData.url += `http://m.zjurl.cn/motor/growthactivity/worldcup2018/invite/?from_user_id=${user_info.user_id}`
-    }
-    this.triggerShare(this.shareData)
-  }
-  triggerShare (shareData) {
-    if (browser.weixin) {
-      setWechatShare(shareData)
-    }
-    if (os.automobile) {
-      window.ToutiaoJSBridge.call('share_board', {
-        ...shareData
-      }, (res) => {})
-    } else {
-      this.setState({ mask: true })
-    }
-  }
-  onShareMaskClose () {
-    this.setState({ mask: false })
   }
   render () {
-    const { info, gatherOver, award } = this.props
-    const { mask } = this.state
+    const { info, gatherOver, award, onShareClick, onInviteClick, onStartClick } = this.props
     return (
       <div>
-        <ShareMask open={!!mask} onClose={this.onShareMaskClose} />
         <AwardMask open={!!award} award={award} />
         <HomeBanner />
         <GameBox>
@@ -129,13 +70,13 @@ export default class Home extends React.Component {
                         card_list={info.card_list}
                       />
                       <Btn
-                        onClick={this.onStartClick}
+                        onClick={onStartClick}
                       >
                         开始抽卡X{info.lottery_num}
                       </Btn>
                       <GhostBtn.group>
-                        <GhostBtn onClick={this.onShareClick}>分享可多抽2张卡</GhostBtn>
-                        <GhostBtn onClick={this.onInviteClick}>邀请好友可多抽3张卡</GhostBtn>
+                        <GhostBtn onClick={onShareClick}>分享可多抽2张卡</GhostBtn>
+                        <GhostBtn onClick={onInviteClick}>邀请好友可多抽3张卡</GhostBtn>
                       </GhostBtn.group>
                     </React.Fragment>
                   )
@@ -148,6 +89,7 @@ export default class Home extends React.Component {
     )
   }
 }
+export default Home
 
 Home.propTypes = {
   info: PropTypes.object,

@@ -6,8 +6,12 @@ import Btn from 'Component/Btn'
 import ScrollView from 'Component/ScrollView'
 import classnames from 'classnames'
 import './style'
+const arr = [2, 3, 5, 7, 8, 10]
 const CardGroup = ({children, num}) => { // eslint-disable-line
-  const type = `card-group-type-${num}`
+  let type = `card-group-type-${num}`
+  if (arr.indexOf(num) === -1) {
+    type = `card-group-type-10`
+  }
   return (
     <div
       className={classnames({
@@ -27,7 +31,7 @@ const CardMask = ({ open, hasGold, closeHandle, card_list = [] }) => {
           <ScrollView className="card-scroll-container">
             <CardGroup num={card_list.length}>
               {
-                card_list.map(i => <Card.special key={i.id} {...i} />)
+                card_list.map((i, index) => <Card.special key={index} {...i} />)
               }
             </CardGroup>
           </ScrollView>

@@ -19,7 +19,7 @@
       overflow: hidden;
       >span {
         position: absolute;
-        // white-space: nowrap;
+        white-space: nowrap;
         font-size: @small_font;
         color: #1B3701;
         top: 50%;
@@ -27,6 +27,9 @@
         transform: translateX(-50%) translateY(-50%);
       }
     }
+  }
+  &:nth-child(4n+1) {
+    border-color: #FEE063;
   }
   &.showNum {
     width: 23%

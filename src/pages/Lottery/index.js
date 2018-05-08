@@ -9,6 +9,8 @@ import CardBox from 'Component/CardBox'
 import BackCardGroup from 'Component/BackCardGroup'
 import CardMask from './components/CardMask'
 import Notice from 'Component/Notice'
+import ShareHOC from 'Component/ShareHOC'
+
 import './style'
 function mapStateToProps ({ card, loading }) {
   return {
@@ -18,15 +20,15 @@ function mapStateToProps ({ card, loading }) {
       hasGold: card.lottery_list.some(i => +i.type === 1),
       list: card.lottery_list
     },
+    user_info: card.user_info,
     open: !!card.lottery_list.length,
+    isLogin: card.user_info && card.user_info.user_id,
     loading: loading.effects['card/lottery']
   }
 }
 @connect(mapStateToProps)
+@ShareHOC
 export default class Lottery extends Component {
-  // state = {
-  //   open: false
-  // }
   openMask = () => {
     this.props.dispatch({ type: 'card/lottery' })
     // .then((e) => {
@@ -50,7 +52,7 @@ export default class Lottery extends Component {
     this.props.dispatch({ type: 'card/fetch' })
   }
   render () {
-    const { card_list, lottery_info, lottery_num, loading, open } = this.props
+    const { card_list, lottery_info, lottery_num, loading, open, onShareClick, onInviteClick } = this.props
     // const { open } = this.state
     return (
       <div className="pg-lottery">
@@ -74,8 +76,8 @@ export default class Lottery extends Component {
               </React.Fragment>
               : <React.Fragment>
                 <div className="empty-logo"/>
-                <GhostBtn inline={false}>分享可多抽2张卡</GhostBtn>
-                <GhostBtn inline={false}>邀请好友可多抽3张卡</GhostBtn>
+                <GhostBtn inline={false} onClick={onShareClick}>分享可多抽2张卡</GhostBtn>
+                <GhostBtn inline={false} onClick={onInviteClick}>邀请好友可多抽3张卡</GhostBtn>
               </React.Fragment>
           }
         </GameBox>
