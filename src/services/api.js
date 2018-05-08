@@ -1,9 +1,15 @@
 import axios from 'axios'
 import Toast from 'antd-mobile/lib/toast'
+import event from '../utils/event'
 import 'antd-mobile/lib/toast/style/css'
-axios.interceptors.response.use(function (res) {
-  if (res.data.status === 'success') {
-    return res.data
+axios.defaults.withCredentials = true
+axios.interceptors.response.use(function ({ data }) {
+  if (data.status === 0) {
+    return data
+  }
+  if (+data.status === 10014) {
+    event.dispatch('login')
+    return Promise.reject(new Error('need login!'))
   }
   return Promise.reject(new Error('bad response'))
 }, function (error) {

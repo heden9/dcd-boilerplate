@@ -2,10 +2,9 @@ var path = require('path')
 var fs = require('fs')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
-var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
 var srcPath = path.resolve(__dirname, '../src')
 var assetsPath = path.resolve(srcPath, 'assets')
@@ -62,6 +61,7 @@ function resolve_pages (path, files) {
         }
 
         const options = {
+            multihtmlCache: true,
             filename: filename,
             template: (path || '') + '/' + (file.source ? file.source.replace(/%name/g, filename) : filename),
             inject: false,
@@ -75,7 +75,15 @@ function resolve_pages (path, files) {
         plugins.push(new HtmlWebpackPlugin(options))
     }
 }
-
+var cssLoaderConfig = [
+    pxtorem({
+        rootValue: 50,
+        propWhiteList: [],
+    })
+]
+__DEV__ || cssLoaderConfig.push(
+    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
+)
 var config = {
     entry: entries,
     output: {
@@ -91,16 +99,15 @@ var config = {
                 enforce: 'pre',
                 test: /.(js|jsx)$/,
                 loader: 'eslint-loader',
-                exclude: [
-                    path.join(__dirname, '../node_modules')
-                ]
+                include: path.resolve(__dirname, '../src')
             },
             {
                 test: /\.(jsx|js)?$/,
-                exclude: /node_modules/,
+                include: path.resolve(__dirname, '../src'),
                 use: {
                     loader: 'babel-loader',
                     options: {
+                        cacheDirectory: true,
                         presets: [
                             ["env", {
                                 "targets": {
@@ -125,13 +132,7 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [
-                                    pxtorem({
-                                        rootValue: 50,
-                                        propWhiteList: [],
-                                    }),
-                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']}),
-                                ],
+                                plugins: cssLoaderConfig,
                             }
                         }
                     ]
@@ -139,6 +140,7 @@ var config = {
             },
             {
                 test: /\.less$/,
+                include: path.resolve(__dirname, '../src'),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     publicPath: '../',
@@ -149,13 +151,7 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [
-                                    pxtorem({
-                                        rootValue: 50,
-                                        propWhiteList: [],
-                                    }),
-                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
-                                ],
+                                plugins: cssLoaderConfig,
                             }
                         },
                         {
@@ -169,6 +165,7 @@ var config = {
             },
             {
                 test: /\.(sass|scss)$/,
+                include: path.resolve(__dirname, '../src'),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     publicPath: '../',
@@ -179,13 +176,7 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: [
-                                    pxtorem({
-                                        rootValue: 50,
-                                        propWhiteList: [],
-                                    }),
-                                    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
-                                ],
+                                plugins: cssLoaderConfig,
                             }
                         },
                         'sass-loader'
@@ -194,6 +185,7 @@ var config = {
             },
             {
                 test: /\.(jpeg|jpg|png|gif|svg)$/,
+                include: path.resolve(__dirname, '../src'),
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -204,6 +196,7 @@ var config = {
             },
             {
                 test: /\.(woff|woff2|ttf|eot|otf)$/,
+                include: path.resolve(__dirname, '../src'),
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -214,6 +207,7 @@ var config = {
             },
             {
                 test: /\.(mp4|mp3)$/,
+                include: path.resolve(__dirname, '../src'),
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -223,12 +217,13 @@ var config = {
             },
             {
                 test: /\.json$/,
+                include: path.resolve(__dirname, '../src'),
                 use: 'json-loader'
             },
         ],
     },
     plugins: plugins.concat([
-
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new CleanWebpackPlugin(['dist'], {
             root: rootPath
         }),
@@ -242,19 +237,12 @@ var config = {
             __PROD__,
         }),
 
-        new InlineManifestWebpackPlugin({name: 'webpackManifest'}),
-
         new ExtractTextPlugin({
             filename: `css/[name]${__DEV__ ? '' : '_[contenthash]'}.css`,
             allChunks: true,
             disable: __DEV__
         }),
 
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendors'].concat(['manifest']),
-            filename: `js/[name]${__DEV__ ? '' : '_[chunkhash]'}.js`,
-            minChunks: Infinity,
-        }),
         new ImageminPlugin({
             disable: __DEV__,
             pngquant: {
@@ -275,7 +263,7 @@ var config = {
             Template: relative('src/templates'),
             Pagelet: relative('src/templates/include'),
         },
-    },
+    }
 }
 
 module.exports = config

@@ -1,5 +1,7 @@
 var webpack = require('webpack')
-
+var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var config = require('./webpack.base.conf.js')
 config = Object.assign({}, config)
 
@@ -10,12 +12,16 @@ config.plugins = config.plugins.concat([
             NODE_ENV: JSON.stringify('production')
         },
     }),
-
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        },
-        except: ['$', 'exports', 'require']
+    new BundleAnalyzerPlugin(),
+    new InlineManifestWebpackPlugin({name: 'webpackManifest'}),
+    new webpack.optimize.CommonsChunkPlugin({
+        names: ['vendors'].concat(['manifest']),
+        filename: `js/[name]_[chunkhash].js`,
+        minChunks: 2,
+    }),
+    new UglifyJsPlugin({
+        cache: true,
+        parallel: true
     }),
 ])
 

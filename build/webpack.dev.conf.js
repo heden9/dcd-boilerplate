@@ -13,16 +13,14 @@ Object.keys(config.entry).forEach(function (name) {
             'react-hot-loader/patch',
             path.join(__dirname, '../', srcMap.scripts[name])
         ]
-        console.log(config.entry[name])
     }
 })
 
-config.devtool = 'source-map';
+config.devtool = 'eval-source-map'; // 性能较好
 config.plugins = config.plugins.concat([
 
     new NyanProgressPlugin(),  // 进度条
 
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
 
 ])

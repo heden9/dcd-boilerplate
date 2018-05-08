@@ -71,6 +71,9 @@ Main.propTypes = {
 AppRegistry({
   initialState: {
   },
+  onError (err) {
+    console.log(err)
+  },
   gModels: [require('../../models/card'), require('../../models/notice')],
   main: Main
 }, __filename)

@@ -51,7 +51,7 @@ SpecialCard.propTypes = Card.propTypes = {
   showNum: PropTypes.bool,
   bgimg: PropTypes.string,
   desc: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   name: PropTypes.string,
   score: PropTypes.string,
   num: PropTypes.number,

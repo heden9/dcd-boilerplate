@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'dva'
 import PropTypes from 'prop-types'
 import chunk from 'lodash/chunk'
-import NoticeBar from 'antd-mobile/lib/notice-bar'
 import GameBox from 'Component/GameBox'
 import Btn from 'Component/Btn'
 import GhostBtn from 'Component/GhostBtn'
 import CardBox from 'Component/CardBox'
 import BackCardGroup from 'Component/BackCardGroup'
 import CardMask from './components/CardMask'
+import Notice from 'Component/Notice'
 import './style'
 function mapStateToProps ({ card, loading }) {
   return {
@@ -60,9 +60,7 @@ export default class Lottery extends Component {
           closeHandle={this.closeMask}
           open={open}
         />
-        <NoticeBar icon="" marqueeProps={{ loop: true }}>
-          瑶***3 集卡得到世界杯纪念足球
-        </NoticeBar>
+        <Notice />
         <div className="lottery-banner">
           <div className="adv-banner">
           </div>

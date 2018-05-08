@@ -10,6 +10,7 @@ var devproxy = require('../config/dev.proxy.js')
 var mocker = path.resolve('mock/app.js')
 
 config.devServer = {
+  disableHostCheck: true,
   host: '0.0.0.0',
   port: devenv.browserPort,
   compress: true, // 启动gzip压缩
@@ -17,6 +18,9 @@ config.devServer = {
   hot: true, // 开启 Hot module replacement
   overlay: {
     errors: true // 在webpack编译出错的时候，在页面上显示弹窗
+  },
+  headers: {
+    'access-control-allow-origin': '*',
   },
   open: true,
   openPage: devenv.autoOpen, // 自动打开浏览器
@@ -29,7 +33,7 @@ config.devServer = {
   //     index: '/app/index.html'
   // },
   setup(app) {
-    apiMocker(app, mocker);
+    // apiMocker(app, mocker);
   },
   proxy: {
 

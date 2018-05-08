@@ -58,7 +58,6 @@
   width: 109px;
   position: relative;
   // overflow: hidden;
-  border-radius: 3px;
   transform: rotateY(180deg);
   transform-style: preserve-3d;
   animation-name: flipInY;
@@ -66,13 +65,25 @@
   animation-fill-mode: forwards;
   animation-delay: 200ms;
   &.gold {
-    // animation-name: Shine;
-    // animation-direction: 1s;
-    // animation-iteration-count: infinite;
-    box-shadow:
-      0 0 2px 1px white,
-      0 0 10px 2px #f8df54,
-      0 0 40px 0 #ffca18;
+    // animation-name: flipInY, Shine;
+    // animation-duration: 0.5s, 2s;
+    // animation-iteration-count: 1, infinite;
+    // animation-timing-function: ease, cubic-bezier(0.165, 0.84, 0.44, 1);
+    &::before {
+      content: "";
+      border-radius: 3px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow:
+        0 0 2px 1px #FFF0C6,
+        0 0 10px 2px #f8df54,
+        0 0 40px 0 #ffca18;
+      animation: Shine 4s infinite linear;
+      transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
   }
   &::after {
     content: "";
@@ -109,13 +120,21 @@
 }
 
 @keyframes Shine {
-  from {
+  from, to {
     box-shadow:
-      0 0 2px 1px white,
+      0 0 2px 1px #FFF0C6,
       0 0 10px 2px #f8df54,
       0 0 40px 0 #ffca18;
   }
-  to {
-    box-shadow: 0 0 20px 0 #ffca18, 0 0 6px #f8df54;
+  33% {
+    box-shadow:
+      0 0 2px 1px #ffca18,
+      0 0 10px 2px #f8df54,
+      0 0 20px 0 #ffca18;
+  }
+  66% {
+    box-shadow:
+      0 0 2px 1px #ffca18,
+      0 0 10px 2px #f8df54,
   }
 }

@@ -1,6 +1,6 @@
 const Mock = require('mockjs')
 module.exports = Mock.mock({
-  "status": "success",
+  "status": "10014",
   "prompts": "",
   "data": {
     "bingo|1-2": false, // true award/card_list

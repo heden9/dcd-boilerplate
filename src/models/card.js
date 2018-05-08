@@ -1,5 +1,7 @@
 import { routerRedux } from 'dva/router'
 import { delay } from 'dva/saga'
+import event from '../utils/event'
+
 import { fetchIndexData, fetchLotteryRes, fetchCompositeRes, ImgLoader } from '../services/api'
 export default {
 
@@ -16,6 +18,9 @@ export default {
 
   subscriptions: {
     setup ({ dispatch, history }) {
+      event.subscribe('login', () => {
+        dispatch(routerRedux.replace('/home'))
+      })
     }
   },
 
