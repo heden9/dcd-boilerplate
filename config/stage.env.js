@@ -1,4 +1,4 @@
 module.exports = {
-    "publicPath": "/motor/inapp/redpacket/",
-    "stagePath": "/motor/inapp/redpacket/"
+    "publicPath": "/motor/growthactivity/worldcup2018/",
+    "stagePath": "/motor/growthactivity/worldcup2018/"
 }

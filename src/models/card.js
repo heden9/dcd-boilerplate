@@ -32,11 +32,10 @@ export default {
     },
     * lottery ({ payload }, { call, put, select }) {
       const { data } = yield call(fetchLotteryRes)
-      const { lottery_num } = yield select(_ => _.card)
       const res = {
         ad_owner: data.ad_owner,
         lottery_list: data.card_list,
-        lottery_num: lottery_num > 0 ? lottery_num - 1 : 0
+        lottery_num: 0
       }
       yield call(ImgLoader, res.lottery_list.concat(require('Assets/images/card_back.png')), (item) => item.bgimg || item)
       yield delay(1000)

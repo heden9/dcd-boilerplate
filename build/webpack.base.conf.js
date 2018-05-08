@@ -258,6 +258,7 @@ var config = {
             SRC: relative('src'),
             Assets: relative('src/assets'),
             Component: relative('src/components'),
+            Util: relative('src/utils'),
             Widget: relative('src/widgets'),
             Plugin: relative('src/plugins'),
             Template: relative('src/templates'),

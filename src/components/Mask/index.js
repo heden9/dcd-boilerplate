@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "./style";
 
+const noop = () => {}
+
 // var ModalHelper = (function(bodyCls) {
 //   var scrollTop;
 //   return {
@@ -41,17 +43,19 @@ export default class Mask extends Component {
   }
   componentWillUnmount() {
     // ModalHelper.beforeClose()
-    this.node.parentNode.removeChild(this.node)
+    this.node.parentNode && this.node.parentNode.removeChild(this.node)
   }
   closeHandle = () => {
     this.props.closeHandle()
-    this.node.parentNode.removeChild(this.node)
+    this.node.parentNode && this.node.parentNode.removeChild(this.node)
   }
   render() {
-    const { children, closeBtn } = this.props;
+    const { children, closeBtn, maskClosable = false } = this.props;
     return ReactDOM.createPortal(
       <React.Fragment>
-        <div className="mask" >
+        <div className="mask"
+          onClick={maskClosable ? this.closeHandle : noop}
+        >
           {
             closeBtn && <a href="javascript:;" onClick={this.closeHandle} className="m-act-del"/>
           }

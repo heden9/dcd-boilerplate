@@ -53,7 +53,7 @@ SpecialCard.propTypes = Card.propTypes = {
   desc: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
-  score: PropTypes.string,
+  score: PropTypes.number,
   num: PropTypes.number,
   type: PropTypes.oneOfType([
     PropTypes.string,

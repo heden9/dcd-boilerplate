@@ -15,7 +15,7 @@ config.plugins = config.plugins.concat([
 
     new WebpackOnBuildPlugin(function (stats) {
         const exec = require('child_process').exec
-        let scpcommand = `rsync -rav -e ssh dist/* tiger@10.11.40.73:/opt/tiger/motor_site/webroot/` + stageEnv.stagePath;
+        let scpcommand = `rsync -rav -e ssh dist/* tiger@10.11.40.73:/opt/tiger/motor/webroot` + stageEnv.stagePath;
         exec(scpcommand, (error, stdout, stderr) => {
             console.log('Finish!')
             if (error) {
