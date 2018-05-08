@@ -5,7 +5,7 @@ var stageEnv = require('../config/stage.env.js')
 
 var rootPath = process.cwd()
 
-var config = require('./webpack.base.conf.js')
+var config = require('./webpack.prod.conf.js')
 config = Object.assign({}, config)
 config.output.publicPath = stageEnv.publicPath;
 

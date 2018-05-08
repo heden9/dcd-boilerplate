@@ -7,6 +7,7 @@ axios.interceptors.response.use(function ({ data }) {
   if (data.status === 0) {
     return data
   }
+  console.log(data)
   if (+data.status === 10014) {
     event.dispatch('login')
     return Promise.reject(new Error('need login!'))

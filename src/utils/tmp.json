@@ -1,0 +1,290 @@
+[
+  {
+    "id": "1",
+    "name": "俄罗斯",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/01.png",
+    "desc": ""
+  },
+  {
+    "id": "2",
+    "name": "德国",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/03.png",
+    "desc": ""
+  },
+  {
+    "id": "3",
+    "name": "巴西",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/02.png",
+    "desc": ""
+  },
+  {
+    "id": "4",
+    "name": "葡萄牙",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/11.png",
+    "desc": ""
+  },
+  {
+    "id": "5",
+    "name": "阿根廷",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/19.png",
+    "desc": ""
+  },
+  {
+    "id": "6",
+    "name": "比利时",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/26.png",
+    "desc": ""
+  },
+  {
+    "id": "7",
+    "name": "波兰",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/30.png",
+    "desc": ""
+  },
+  {
+    "id": "8",
+    "name": "法国",
+    "num": 0,
+    "score": 50,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/15.png",
+    "desc": ""
+  },
+  {
+    "id": "9",
+    "name": "西班牙",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/10.png",
+    "desc": ""
+  },
+  {
+    "id": "10",
+    "name": "秘鲁",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/13.png",
+    "desc": ""
+  },
+  {
+    "id": "11",
+    "name": "瑞士",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/22.png",
+    "desc": ""
+  },
+  {
+    "id": "12",
+    "name": "英格兰",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/23.png",
+    "desc": ""
+  },
+  {
+    "id": "13",
+    "name": "哥伦比亚",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/28.png",
+    "desc": ""
+  },
+  {
+    "id": "14",
+    "name": "墨西哥",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/04.png",
+    "desc": ""
+  },
+  {
+    "id": "15",
+    "name": "乌拉圭",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/05.png",
+    "desc": ""
+  },
+  {
+    "id": "16",
+    "name": "克罗地亚",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/17.png",
+    "desc": ""
+  },
+  {
+    "id": "17",
+    "name": "丹麦",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/12.png",
+    "desc": ""
+  },
+  {
+    "id": "18",
+    "name": "冰岛",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/18.png",
+    "desc": ""
+  },
+  {
+    "id": "19",
+    "name": "哥斯达黎加",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/21.png",
+    "desc": ""
+  },
+  {
+    "id": "20",
+    "name": "瑞典",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/31.png",
+    "desc": ""
+  },
+  {
+    "id": "21",
+    "name": "突尼斯",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/24.png",
+    "desc": ""
+  },
+  {
+    "id": "22",
+    "name": "埃及",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/06.png",
+    "desc": ""
+  },
+  {
+    "id": "23",
+    "name": "塞内加尔",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/29.png",
+    "desc": ""
+  },
+  {
+    "id": "24",
+    "name": "伊朗",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/08.png",
+    "desc": ""
+  },
+  {
+    "id": "25",
+    "name": "塞尔维亚",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/20.png",
+    "desc": ""
+  },
+  {
+    "id": "26",
+    "name": "尼日利亚",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/16.png",
+    "desc": ""
+  },
+  {
+    "id": "27",
+    "name": "澳大利亚",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/14.png",
+    "desc": ""
+  },
+  {
+    "id": "28",
+    "name": "日本",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/27.png",
+    "desc": ""
+  },
+  {
+    "id": "29",
+    "name": "摩洛哥",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/09.png",
+    "desc": ""
+  },
+  {
+    "id": "30",
+    "name": "巴拿马",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/25.png",
+    "desc": ""
+  },
+  {
+    "id": "31",
+    "name": "韩国",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/32.png",
+    "desc": ""
+  },
+  {
+    "id": "32",
+    "name": "沙特阿拉伯",
+    "num": 0,
+    "score": 20,
+    "bgimg":
+      "//sf3-ttcdn-tos.pstatp.com/obj/ttfe/motor/fe/image/worldcup/07.png",
+    "desc": ""
+  }
+]

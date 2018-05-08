@@ -8,7 +8,7 @@ export default {
   namespace: 'card',
 
   state: {
-    card_list: [],
+    card_list: require('../utils/tmp.json'),
     lottery_list: [],
     has_expire_prize: 0,
     lottery_num: 5,
