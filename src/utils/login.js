@@ -16,6 +16,7 @@ export default function login (success, error) {
     }
   } else {
     let url = window.location.href
+    url = url.replace(/#\/.+/g, '')
     url = url.indexOf('?') > -1 ? (url + '&login_type=1') : (url + '?login_type=1')
     window.location.href = 'https://sso.toutiao.com/login/?service=' + encodeURIComponent(url) + '&template_type=1'
   }
