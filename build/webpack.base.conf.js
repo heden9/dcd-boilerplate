@@ -83,9 +83,25 @@ var cssLoaderConfig = [
         propWhiteList: [],
     })
 ]
-__DEV__ || cssLoaderConfig.push(
-    autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
-)
+var babelOpts = {
+    cacheDirectory: true,
+    presets: [
+        ["env", {
+            "targets": {
+            "browsers": ["last 2 versions", "safari >= 7"]
+            },
+            "loose": true
+        }]
+        , 'react', 'stage-0'],
+    plugins: ['transform-decorators-legacy', 'add-module-exports']
+}
+if (__DEV__) {
+    babelOpts.plugins.push('dva-hmr')
+}else {
+    cssLoaderConfig.push(
+        autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
+    )
+}
 var config = {
     entry: entries,
     output: {
@@ -108,18 +124,7 @@ var config = {
                 include: relative('src'),
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true,
-                        presets: [
-                            ["env", {
-                                "targets": {
-                                "browsers": ["last 2 versions", "safari >= 7"]
-                                },
-                                "loose": true
-                            }]
-                            , 'react', 'stage-0'],
-                        plugins: ['transform-decorators-legacy', 'add-module-exports', 'dva-hmr']
-                    }
+                    options: babelOpts,
                 }
             },
             {
