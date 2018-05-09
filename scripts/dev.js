@@ -44,9 +44,9 @@ function setupDevConfig(port) {
     },
     publicPath: devenv.publicPath,
     stats: { colors: true }, // 彩色输出
-    historyApiFallback: { // 让我们所有404的请求都返回这个
-        index: '/home/index.html'
-    },
+    // historyApiFallback: { // 让我们所有404的请求都返回这个
+    //     index: '/home/index.html'
+    // },
     setup(app) {
       // apiMocker(app, mocker);
     },
