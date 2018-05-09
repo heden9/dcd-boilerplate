@@ -4,6 +4,8 @@ import login from 'Util/login'
 import { os, browser } from 'Util/ua'
 import { initWechatShare, setWechatShare } from 'Util/wechat'
 import { routerRedux } from 'dva/router'
+import { updateShare } from 'Service/api'
+
 export default function ShareHOC (WrapperComponent) {
   return class _ShareHOC extends React.Component {
     constructor (props) {
@@ -13,7 +15,7 @@ export default function ShareHOC (WrapperComponent) {
       }
       this.shareData = {
         title: '标题',
-        desc: '描述',
+        desc: '这是描述',
         image: 'http://s3.pstatp.com/motor/fe/m_web/image/icon_b20643c1e72d93179f6ff6e3e33e2ab0.png',
         url: 'http://m.zjurl.cn/motor/growthactivity/worldcup2018/home/'
       }
@@ -37,23 +39,25 @@ export default function ShareHOC (WrapperComponent) {
       }
     }
     onShareClick () {
-      this.triggerShare(this.shareData)
+      this.triggerShare(this.shareData, updateShare)
     }
     onInviteClick () {
       const {user_info = {}} = this.props
       if (user_info.user_id) {
-        this.shareData.url += `http://m.zjurl.cn/motor/growthactivity/worldcup2018/invite/?from_user_id=${user_info.user_id}`
+        this.shareData.url += `http://m.zjurl.cn/motor/growthactivity/worldcup2018/invite/?from_user_id=${user_info.user_id}&from_user_name=${user_info.user_name}`
       }
       this.triggerShare(this.shareData)
     }
-    triggerShare (shareData) {
+    triggerShare (shareData, successCallback) {
       if (browser.weixin) {
-        setWechatShare(shareData)
+        setWechatShare(shareData, successCallback)
       }
       if (os.automobile) {
         window.ToutiaoJSBridge.call('share_board', {
           ...shareData
-        }, (res) => {})
+        }, (res) => {
+          successCallback && successCallback()
+        })
       } else {
         this.setState({ mask: true })
       }

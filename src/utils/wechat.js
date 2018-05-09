@@ -27,11 +27,11 @@ var $jsonp = (function () {
   return that;
 })();
 
-function initWechatShare(data) {
+function initWechatShare(data, callback) {
   var nonceStr = "Wm3WZYTPz0wzccnW";
   var timestamp = Date.now();
-  var appid = "wx53fcf3395bc0fe5e";
-  var debug = false;
+  var appid = "wx53fcf3395bc0fe5e"; // "wx53fcf3395bc0fe5e";
+  var debug = true;
 
   var success = function(response) {
     if(response.code == 1){
@@ -47,7 +47,7 @@ function initWechatShare(data) {
 
     }
     wx.ready(function() {
-      setWechatShare(data)
+      setWechatShare(data, callback)
     });
     wx.error(function(res) {
       console.debug(res)
@@ -74,13 +74,14 @@ function initWechatShare(data) {
   }
 }
 
-function setWechatShare(data) {
+function setWechatShare(data, callback) {
   wx.onMenuShareTimeline({
     title: data.title, // 分享标题
     link: data.url, // 分享链接
     imgUrl: data.image, // 分享图标
     success: function() {
       // 用户确认分享后执行的回调函数
+      callback && callback()
     },
     cancel: function() {
       // 用户取消分享后执行的回调函数
@@ -95,6 +96,7 @@ function setWechatShare(data) {
     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
     success: function() {
       // 用户确认分享后执行的回调函数
+      callback && callback()
     },
     cancel: function() {
       // 用户取消分享后执行的回调函数

@@ -14,7 +14,7 @@ axios.interceptors.response.use(function ({ data }) {
   }
   return Promise.reject(new Error('bad response'))
 }, function (error) {
-  Toast.fail('接口异常....')
+  Toast.fail('服务繁忙，请稍后再试')
   return Promise.reject(error)
 })
 function imgPromisify (src) {
@@ -45,7 +45,11 @@ export const fetchCompositeRes = () => {
 }
 
 export const fetchAwardList = () => {
-  return axios.get('/motor/pleasure/worldcup/awards/list')
+  return axios.get('/motor/pleasure/worldcup/award')
+}
+
+export const fetchAwardDetail = (prize_no) => {
+  return axios.get(`/motor/pleasure/worldcup/award/${prize_no}`)
 }
 
 export const fetchPrizeList = () => {
@@ -57,9 +61,13 @@ export const fetchPrizeDetail = (id) => {
 }
 
 export const fetchInviteRes = (from_user_id) => {
-  return axios.post('/motor/pleasure/worldcup/invite', { from_user_id })
+  return axios.post(`/motor/pleasure/worldcup/invite/${from_user_id}`)
 }
 
 export const fetchWinnerList = () => {
   return axios.get('/motor/pleasure/worldcup/winners')
+}
+
+export const updateShare = () => {
+  return axios.post('/motor/pleasure/worldcup/share')
 }

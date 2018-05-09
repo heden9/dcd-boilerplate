@@ -7991,10 +7991,6 @@ source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
-sourcemap@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/sourcemap/-/sourcemap-0.1.0.tgz#1a97b114136dd59d060aabbf1ccd1fd8f49a4aa4"
-
 sourcemapped-stacktrace@^1.1.6:
   version "1.1.8"
   resolved "https://registry.npmjs.org/sourcemapped-stacktrace/-/sourcemapped-stacktrace-1.1.8.tgz#6b7a3f1a6fb15f6d40e701e23ce404553480d688"

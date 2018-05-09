@@ -11,7 +11,7 @@ if (__DEV__) {
     var exdate = new Date()
     exdate.setDate(exdate.getDate() + expiredays)
     document.cookie = c_name + '=' + escape(value) +
-    ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString())
+    ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString()) + '; path=/'
   }
-  setCookie('sessionid', '7bb9f4a9f4733867157063d00af450fa')
+  setCookie('sessionid', '7bb9f4a9f4733867157063d00af450fa', 30)
 }

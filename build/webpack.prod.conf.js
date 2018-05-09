@@ -12,7 +12,7 @@ config.plugins = config.plugins.concat([
             NODE_ENV: JSON.stringify('production')
         },
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new InlineManifestWebpackPlugin({name: 'webpackManifest'}),
     new webpack.optimize.CommonsChunkPlugin({
         names: ['vendors'].concat(['manifest']),

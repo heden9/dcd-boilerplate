@@ -14,11 +14,13 @@ const { ConnectedRouter } = routerRedux
 
 const routes = [
   {
-    path: '/reward',
+    path: '/',
+    exact: true,
     component: () => import(/* webpackChunkName: "chunk-reward" */ '../../pages/InvideReward')
   },
   {
     path: '/receive',
+    exact: true,
     component: () => import(/* webpackChunkName: "chunk-receive" */ '../../pages/InvideReceive')
   }
 ]
@@ -29,7 +31,7 @@ function Main ({ history, app }) {
       <InvideCover>
         <Switch>
           {
-            routes.map(({ path, ...dynamics }) => (
+            routes.map(({ path, exact, ...dynamics }) => (
               <Route
                 exact
                 key={path}
@@ -41,7 +43,7 @@ function Main ({ history, app }) {
               />
             ))
           }
-          <Redirect to="/reward" />
+          <Redirect to="/" />
         </Switch>
       </InvideCover>
     </ConnectedRouter>

@@ -20,7 +20,7 @@ const Prize = ({rank = 'XX', award = {}, share = false}) => (
     </div>
     <div className="prize-img">
       <div className="bg-light"></div>
-      <img src={award.bgimg} />
+      <img src={award.bgimg_transparent} />
     </div>
   </div>
 )

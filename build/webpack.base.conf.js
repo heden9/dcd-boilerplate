@@ -267,6 +267,7 @@ var config = {
             Assets: relative('src/assets'),
             Component: relative('src/components'),
             Util: relative('src/utils'),
+            Service: relative('src/services'),
             Widget: relative('src/widgets'),
             Plugin: relative('src/plugins'),
             Template: relative('src/templates'),

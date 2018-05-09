@@ -22,12 +22,10 @@ const routes = [
   },
   {
     path: '/lottery',
-    needLogin: false,
     component: () => import(/* webpackChunkName: "chunk-lottery" */ '../../pages/Lottery')
   },
   {
     path: '/awards',
-    needLogin: false,
     models: () => [import(/* webpackChunkName: "chunk-award" */ '../../models/awards')],
     component: () => import(/* webpackChunkName: "chunk-awards" */ '../../pages/Awards')
   },

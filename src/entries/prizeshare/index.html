@@ -19,6 +19,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <script src="//s3.pstatp.com/inapp/toutiao.js"></script>
     <% for (var body of htmlWebpackPlugin.options.body) { %>
     <script src="<%= htmlWebpackPlugin.files.chunks[body].entry %>"></script>
     <% } %>
