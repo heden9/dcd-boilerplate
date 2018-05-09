@@ -4,7 +4,6 @@ import login from 'Util/login'
 import { os, browser } from 'Util/ua'
 import { initWechatShare, setWechatShare } from 'Util/wechat'
 import { routerRedux } from 'dva/router'
-
 export default function ShareHOC (WrapperComponent) {
   return class _ShareHOC extends React.Component {
     constructor (props) {

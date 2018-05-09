@@ -72,7 +72,7 @@ export default class Lottery extends Component {
             +lottery_num !== 0
               ? <React.Fragment>
                 <BackCardGroup />
-                <Btn onClick={this.openMask} >{ loading ? '抽卡中...' : `全部翻开X${lottery_num}` }</Btn>
+                <Btn onClick={this.openMask} disable={loading}>{ loading ? '抽卡中...' : `全部翻开X${lottery_num}` }</Btn>
               </React.Fragment>
               : <React.Fragment>
                 <div className="empty-logo"/>

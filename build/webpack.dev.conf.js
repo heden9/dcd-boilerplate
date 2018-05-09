@@ -1,5 +1,4 @@
 var webpack = require('webpack')
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
 var path = require('path')
 var config = require('./webpack.base.conf.js')
 var devEnv = require('../config/dev.env.js')
@@ -10,7 +9,8 @@ config = Object.assign({}, config)
 Object.keys(config.entry).forEach(function (name) {
     if (name !== 'vendors'){
         config.entry[name] = [
-            'react-hot-loader/patch',
+            'webpack/hot/dev-server',
+            'webpack-hot-middleware/client?reload=true',
             path.join(__dirname, '../', srcMap.scripts[name])
         ]
     }
@@ -18,9 +18,6 @@ Object.keys(config.entry).forEach(function (name) {
 
 config.devtool = 'eval-source-map'; // 性能较好
 config.plugins = config.plugins.concat([
-
-    new NyanProgressPlugin(),  // 进度条
-
     new webpack.HotModuleReplacementPlugin(),
 
 ])

@@ -1,19 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { AppRegistry } from '../common'
-import PrizeShare from '../../pages/PrizeShare'
-import './style'
 
-function Main ({ history, app }) {
-  return <PrizeShare />
-}
+import dva from 'dva'
+import createLoading from 'dva-loading'
+import '../common'
+const app = dva({
+  onError () {
 
-Main.propTypes = {
-  history: PropTypes.object,
-  app: PropTypes.object
-}
+  },
+  ...createLoading({
+    effects: true
+  })
+})
 
-AppRegistry({
-  gModels: [],
-  main: Main
-}, __dirname)
+app.router(require('./main'))
+
+app.start('#root')

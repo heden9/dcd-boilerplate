@@ -3,6 +3,7 @@ import { delay } from 'dva/saga'
 import event from '../utils/event'
 
 import { fetchIndexData, fetchLotteryRes, fetchCompositeRes, ImgLoader } from '../services/api'
+
 export default {
 
   namespace: 'card',
@@ -35,7 +36,7 @@ export default {
       // const { lottery_num } = yield select(_ => _.card)
       const res = {
         ad_owner: data.ad_owner,
-        lottery_list: data.card_list,
+        lottery_list: data.card_list.sort((a1, a2) => a1.type === 1 ? -1 : 1),
         lottery_num: 0
       }
       yield call(ImgLoader, res.lottery_list.concat(require('Assets/images/card_back.png')), (item) => item.bgimg || item)

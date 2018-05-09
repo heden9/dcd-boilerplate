@@ -6,7 +6,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
-var srcPath = path.resolve(__dirname, '../src')
+
+var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
+var srcPath = relative('src')
 var assetsPath = path.resolve(srcPath, 'assets')
 var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
 var pxtorem = require('postcss-pxtorem')
@@ -99,11 +101,11 @@ var config = {
                 enforce: 'pre',
                 test: /.(js|jsx)$/,
                 loader: 'eslint-loader',
-                include: path.resolve(__dirname, '../src')
+                include: relative('src')
             },
             {
                 test: /\.(jsx|js)?$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -116,7 +118,7 @@ var config = {
                                 "loose": true
                             }]
                             , 'react', 'stage-0'],
-                        plugins: ['transform-decorators-legacy', 'react-hot-loader/babel']
+                        plugins: ['transform-decorators-legacy', 'add-module-exports', 'dva-hmr']
                     }
                 }
             },
@@ -140,7 +142,7 @@ var config = {
             },
             {
                 test: /\.less$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     publicPath: '../',
@@ -165,7 +167,7 @@ var config = {
             },
             {
                 test: /\.(sass|scss)$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     publicPath: '../',
@@ -185,7 +187,7 @@ var config = {
             },
             {
                 test: /\.(jpeg|jpg|png|gif|svg)$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -196,7 +198,7 @@ var config = {
             },
             {
                 test: /\.(woff|woff2|ttf|eot|otf)$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -207,7 +209,7 @@ var config = {
             },
             {
                 test: /\.(mp4|mp3)$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -217,13 +219,14 @@ var config = {
             },
             {
                 test: /\.json$/,
-                include: path.resolve(__dirname, '../src'),
+                include: relative('src'),
                 use: 'json-loader'
             },
         ],
     },
     plugins: plugins.concat([
-        new webpack.optimize.ModuleConcatenationPlugin(),
+        // new NyanProgressPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(), // Scope Hoisting https://zhuanlan.zhihu.com/p/27980441
         new CleanWebpackPlugin(['dist'], {
             root: rootPath
         }),

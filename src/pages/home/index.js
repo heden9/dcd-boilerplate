@@ -43,7 +43,8 @@ const noop = () => {}
 class Home extends React.Component {
   static defaultProps = {
     onShareClick: noop,
-    onInviteClick: noop
+    onInviteClick: noop,
+    user_info: {}
   }
   componentDidMount () {
     if (!this.props.gatherOver) {
@@ -51,10 +52,10 @@ class Home extends React.Component {
     }
   }
   render () {
-    const { info, gatherOver, award, onShareClick, onInviteClick, onStartClick } = this.props
+    const { info, gatherOver, award, onShareClick, user_info, onInviteClick, onStartClick } = this.props
     return (
       <div>
-        <AwardMask open={!!award} award={award} />
+        <AwardMask open={!!award} award={award} user_id={user_info.user_id} />
         <HomeBanner />
         <GameBox>
           <div className="home-box">

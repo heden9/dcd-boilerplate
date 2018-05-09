@@ -36,7 +36,7 @@ class CardBox extends React.Component {
             <div key={index} className="box-item">
               <Card.container>
                 {
-                  item.map((item) => <Card key={item.id} {...item} showNum={showNum}/>)
+                  item.map((item, index) => <Card key={index} {...item} showNum={showNum}/>)
                 }
               </Card.container>
             </div>

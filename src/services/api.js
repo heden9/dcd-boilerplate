@@ -33,7 +33,6 @@ const noop = (...arg) => arg
 export function ImgLoader (imgList = [], cb = noop) {
   const img = imgList.map((...arg) => imgPromisify(cb(...arg))) // eslint-disable-line
   return Promise.all(img)
-    .then(res => console.log(res))
 }
 export const fetchIndexData = () => {
   return axios.get('/motor/pleasure/worldcup/index')

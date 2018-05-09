@@ -1,5 +1,5 @@
 var webpack = require('webpack')
-var config = require('./webpack.prod.conf.js')
+var config = require('../build/webpack.prod.conf.js')
 
 console.log(
     '  Tip:\n' +
