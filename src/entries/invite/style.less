@@ -1,13 +1,13 @@
 @import "~Assets/styles/normalize.less";
 
-html, body, #root {
+html, body {
   height: 100%;
-  box-sizing: border-box;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 #root {
-  background: url(~Assets/images/bg.jpg) center center / cover no-repeat;
+  overflow: hidden;
+  min-height: 100%;
+  box-sizing: border-box;
+  background: @deep_green_1 url(~Assets/images/bg.jpg) center center/contain;
 }
 // 文字滚动样式
 .am-notice-bar {

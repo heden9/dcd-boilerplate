@@ -5,19 +5,28 @@ import Notice from 'Component/Notice'
 import Btn from 'Component/Btn'
 import BackCardGroup from 'Component/BackCardGroup'
 import login from 'Util/login'
+import {getRequestParams, sessionStorageProxy} from 'Util/tools'
 import './style'
+
+// 关联邀请人, 解决中文名字问题
+let { from_user_id, from_user_name = '' } = getRequestParams()
+from_user_name = decodeURIComponent(from_user_name) || ''
+from_user_name = sessionStorageProxy.getItem('from_user_name') || from_user_name
+sessionStorageProxy.setItem('from_user_name', from_user_name || '')
 
 function mapStateToProps ({ invite }) {
   return {
     ...invite
   }
 }
-
 @connect(mapStateToProps)
 class InvideReward extends Component {
   constructor (props) {
     super(props)
     this.onStartClick = this.loginEnhance(this.onStartClick).bind(this)
+  }
+  componentDidMount () {
+    this.props.dispatch({ type: 'invite/fetch', payload: { from_user_id } })
   }
   onStartClick = () => {
     this.props.dispatch(routerRedux.push({
@@ -33,14 +42,14 @@ class InvideReward extends Component {
         login(() => {
           that.props.dispatch({
             type: 'invite/fetch',
-            payload: {from_user_id: that.props.from_user_info.from_user_id}
+            payload: {from_user_id: from_user_id}
           })
         })
       }
     }
   }
   render () {
-    const { from_user_info = {} } = this.props
+    console.log(from_user_name)
     return (
       <div className="page-invide-reward">
         <div className="content">
@@ -48,7 +57,7 @@ class InvideReward extends Component {
           <h3 className="reward-msg-title shadow">更有多重奖品等你拿</h3>
           <Notice />
           <h3 className="reward-msg-desc">
-            {from_user_info.from_user_name || '懂车帝'}送你5张卡
+            {from_user_name || '懂车帝'}送你5张卡
           </h3>
           <BackCardGroup>
             <Btn

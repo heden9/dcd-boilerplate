@@ -21,10 +21,16 @@ class InvideReceive extends Component {
           <h3 className="receive-title">集齐32张球队卡赢世界杯套票</h3>
           <h3 className="receive-title">更有多重奖品等你拿</h3>
           <div className="receive-wrap">
-            <div className="receive-banner"></div>
+            {
+              card_list && <div className="receive-banner"></div>
+            }
             <div className="receive-content">
-              <ReceiveCard list={card_list} />
-              <Btn onClick={openApp}>立即领取</Btn>
+              {
+                card_list
+                  ? <ReceiveCard list={card_list} />
+                  : <div className="empty">您已领过别人送的球队卡啦</div>
+              }
+              <Btn onClick={openApp}>{card_list ? '立即领取' : '进入活动'}</Btn>
               <ReceiveRules />
             </div>
           </div>
