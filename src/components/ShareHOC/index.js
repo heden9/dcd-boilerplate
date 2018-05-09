@@ -66,12 +66,18 @@ export default function ShareHOC (WrapperComponent) {
         pathname: '/lottery'
       }))
     }
+    onEnterAwards = () => {
+      this.props.dispatch(routerRedux.push({
+        pathname: '/awards'
+      }))
+    }
     render () {
       const { mask } = this.state
       const props = {
         onShareClick: this.onShareClick,
         onInviteClick: this.onInviteClick,
         onStartClick: this.onStartClick,
+        onEnterAwards: this.onEnterAwards,
         ...this.props
       }
       return (

@@ -52,11 +52,19 @@ class Home extends React.Component {
     }
   }
   render () {
-    const { info, gatherOver, award, onShareClick, user_info, onInviteClick, onStartClick } = this.props
+    const { info, gatherOver, award, onShareClick, user_info, onInviteClick, onStartClick, onEnterAwards } = this.props
+    const navbar = {
+      '奖品中心': {
+        to: '/prizes/'
+      },
+      '我的奖品': {
+        onClick: onEnterAwards
+      }
+    }
     return (
       <div>
         <AwardMask open={!!award} award={award} user_id={user_info.user_id} />
-        <HomeBanner />
+        <HomeBanner navbar={navbar} />
         <GameBox>
           <div className="home-box">
             <Notice />

@@ -4,7 +4,9 @@ import HomeBanner from 'Component/HomeBanner'
 
 export default function Cover ({ children }) {
   const navbar = {
-    '奖品中心': '/prizes/'
+    '奖品中心': {
+      to: '/prizes/'
+    }
   }
   return (
     <React.Fragment>

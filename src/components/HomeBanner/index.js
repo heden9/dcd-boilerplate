@@ -2,23 +2,34 @@
 import React from 'react'
 import './style'
 
-const defaultNavbar = {
-  '奖品中心': '/prizes/',
-  '我的奖品': '#/awards'
-}
+const noop = () => {}
 function Navbar ({navbar}) {
   return (
     <div className="navbar">
       <img className="logo" src={require('./images/logo@3x.png')} />
       <ul>
         {
-          Object.keys(navbar).map(item => (
-            <li key={item}><a href={navbar[item]}>{item}</a></li>
-          ))
+          Object.keys(navbar).map(i => {
+            const item = navbar[i]
+            const href = item.to ? item.to : 'javascript:;'
+            const onClick = item.onClick ? item.onClick : noop
+            return (
+              <li key={i}><a onClick={onClick} href={href}>{i}</a></li>
+            )
+          })
         }
       </ul>
     </div>
   )
+}
+
+const defaultNavbar = {
+  '奖品中心': {
+    to: '/prizes/',
+  },
+  '我的奖品': {
+    to: '#/awards'
+  }
 }
 export default function HomeBanner ({navbar = defaultNavbar}) {
   return (

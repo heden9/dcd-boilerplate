@@ -15,11 +15,11 @@ const { ConnectedRouter } = routerRedux
 const routes = [
   {
     path: '/reward',
-    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/InvideReward')
+    component: () => import(/* webpackChunkName: "chunk-reward" */ '../../pages/InvideReward')
   },
   {
     path: '/receive',
-    component: () => import(/* webpackChunkName: "chunk-book" */ '../../pages/InvideReceive')
+    component: () => import(/* webpackChunkName: "chunk-receive" */ '../../pages/InvideReceive')
   }
 ]
 
