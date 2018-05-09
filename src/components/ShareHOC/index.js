@@ -44,7 +44,7 @@ export default function ShareHOC (WrapperComponent) {
     onInviteClick () {
       const {user_info = {}} = this.props
       if (user_info.user_id) {
-        this.shareData.url += `http://m.zjurl.cn/motor/growthactivity/worldcup2018/invite/?from_user_id=${user_info.user_id}&from_user_name=${user_info.user_name}`
+        this.shareData.url = `http://m.zjurl.cn/motor/growthactivity/worldcup2018/invite/?from_user_id=${user_info.user_id}&from_user_name=${user_info.name}`
       }
       this.triggerShare(this.shareData)
     }
