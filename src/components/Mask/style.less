@@ -1,4 +1,4 @@
-.mask {
+.cpt-mask {
   position: fixed;
   left: 0;
   top: 0;
@@ -6,7 +6,7 @@
   height: 100%;
   z-index: 99;
   background: rgba(0, 0, 0, .8);
-  .m-act-del{
+  .mask-close-btn{
     right: 14px;
     top: 14px;
     position: absolute;
@@ -15,7 +15,7 @@
     height: 25px;
     }
 
-    .m-act-del::before, .m-act-del::after {
+    &::before, &::after {
     content: '';
     position: absolute;
     height: 2px;
@@ -24,18 +24,18 @@
     background: #fff;
     }
 
-    .m-act-del::before {
+    &::before {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     }
 
 
-    .m-act-del::after {
+    &::after {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     }
 }
-.dialog {
+.cpt-dialog {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -44,12 +44,3 @@
   color: white;
   transform: translateX(-50%) translateY(-50%);
 }
-// html,
-// body{
-//   &.modal-open {
-//     position: fixed;
-//     width: 100%;
-//     max-height: 100%;
-//     overflow: hidden;
-//   }
-// }

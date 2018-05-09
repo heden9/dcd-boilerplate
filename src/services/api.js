@@ -34,40 +34,6 @@ export function ImgLoader (imgList = [], cb = noop) {
   const img = imgList.map((...arg) => imgPromisify(cb(...arg))) // eslint-disable-line
   return Promise.all(img)
 }
-export const fetchIndexData = () => {
-  return axios.get('/motor/pleasure/worldcup/index')
-}
-export const fetchLotteryRes = () => {
-  return axios.post('/motor/pleasure/worldcup/lottery')
-}
-export const fetchCompositeRes = () => {
-  return axios.post('/motor/pleasure/worldcup/call')
-}
-
-export const fetchAwardList = () => {
-  return axios.get('/motor/pleasure/worldcup/award')
-}
-
-export const fetchAwardDetail = (prize_no) => {
-  return axios.get(`/motor/pleasure/worldcup/award/${prize_no}`)
-}
-
-export const fetchPrizeList = () => {
-  return axios.get('/motor/pleasure/worldcup/prize')
-}
-
-export const fetchPrizeDetail = (id) => {
-  return axios.get(`/motor/pleasure/worldcup/prize/${id}`)
-}
-
-export const fetchInviteRes = (from_user_id) => {
-  return axios.post(`/motor/pleasure/worldcup/invite/${from_user_id}`)
-}
-
-export const fetchWinnerList = () => {
-  return axios.get('/motor/pleasure/worldcup/winners')
-}
-
-export const updateShare = () => {
-  return axios.post('/motor/pleasure/worldcup/share')
+export const fetchTest = () => {
+  return axios.get('/motor/pleasure/worldcup/awards/list')
 }

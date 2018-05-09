@@ -9,30 +9,18 @@ module.exports = {
             "react",
             "react-dom"
         ],
-        home: "src/entries/home/index.js",
-        invite: "src/entries/invite/index.js",
-        prizes: "src/entries/prizes/index.js",
-        prizeshare: "src/entries/prizeshare/index.js"
+        bar: "src/entries/bar/index.js",
+        foo: "src/entries/foo/index.js",
     },
     pages: {
-        "home/index.html": {
+        "bar/index.html": {
             scripts: {
-                body: [ "vendors", "home" ]
+                body: [ "vendors", "bar" ]
             }
         },
-        "invite/index.html": {
+        "foo/index.html": {
             scripts: {
-                body: [ "vendors", "invite" ]
-            }
-        },
-        "prizes/index.html": {
-            scripts: {
-                body: [ "vendors", "prizes"]
-            }
-        },
-        "prizeshare/index.html": {
-            scripts: {
-                body: ["vendors", "prizeshare"]
+                body: [ "vendors", "foo" ]
             }
         }
     }

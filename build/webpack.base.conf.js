@@ -84,7 +84,7 @@ var cssLoaderConfig = [
     })
 ]
 var babelOpts = {
-    cacheDirectory: true,
+    // cacheDirectory: true,
     presets: [
         ["env", {
             "targets": {
@@ -268,10 +268,7 @@ var config = {
             Component: relative('src/components'),
             Util: relative('src/utils'),
             Service: relative('src/services'),
-            Widget: relative('src/widgets'),
-            Plugin: relative('src/plugins'),
-            Template: relative('src/templates'),
-            Pagelet: relative('src/templates/include'),
+            Page: relative('src/pages')
         },
     }
 }

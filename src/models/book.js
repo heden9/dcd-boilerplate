@@ -1,7 +1,6 @@
-import { fetchTest } from 'Service/api'
 export default {
 
-  namespace: 'home',
+  namespace: 'book',
 
   state: {},
 
@@ -13,8 +12,6 @@ export default {
 
   effects: {
     * fetch ({ payload }, { call, put }) {
-      const { data } = yield call(fetchTest)
-      console.log(data)
       yield put({ type: 'save' })
     }
   },

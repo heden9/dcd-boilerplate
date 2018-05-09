@@ -35,6 +35,5 @@ export default class ScrollView extends React.Component {
 ScrollView.propTypes = {
   ID: PropTypes.string,
   height: PropTypes.number,
-  // children: PropTypes.object,
   className: PropTypes.string
 }

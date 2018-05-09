@@ -48,7 +48,7 @@ function setupDevConfig(port) {
     //     index: '/home/index.html'
     // },
     setup(app) {
-      // apiMocker(app, mocker);
+      apiMocker(app, mocker);
     },
     proxy: {
 

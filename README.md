@@ -39,6 +39,97 @@ $ npm run review gengweibiao.fe
 -   动态路由方案，按需model，page
 -   hmr
 
+# 目录结构
+
+```bash
+├── README.md
+├── bin
+│   └── review
+├── build
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   ├── webpack.prod.conf.js
+│   └── webpack.stage.conf.js
+├── config
+│   ├── dev.env.js
+│   ├── dev.proxy.js
+│   ├── less.vars.js
+│   ├── prod.env.js
+│   ├── src.map.js
+│   └── stage.env.js
+├── mock
+│   ├── app.js
+│   └── awards_mock.js
+├── package-lock.json
+├── package.json
+├── scm_build.sh
+├── scm_build_resource.sh
+├── scripts
+│   ├── compiler.js
+│   ├── dev.js
+│   ├── fork.js
+│   ├── loader.js
+│   ├── prod.js
+│   ├── send.js
+│   └── server.js
+├── src
+│   ├── assets
+│   │   ├── fonts
+│   │   ├── images
+│   │   └── styles
+│   │       └── normalize.less
+│   ├── components
+│   │   ├── Mask
+│   │   │   ├── index.js
+│   │   │   └── style.less
+│   │   ├── Navbar
+│   │   │   ├── index.js
+│   │   │   └── style.less
+│   │   └── ScrollView
+│   │       ├── index.js
+│   │       └── style.less
+│   ├── entries
+│   │   ├── antm.html
+│   │   ├── bar
+│   │   │   ├── index.html
+│   │   │   ├── index.js
+│   │   │   ├── main.js
+│   │   │   └── style.less
+│   │   ├── common.html
+│   │   ├── common.js
+│   │   └── foo
+│   │       ├── index.html
+│   │       ├── index.js
+│   │       ├── main.js
+│   │       └── style.less
+│   ├── layouts
+│   │   └── Cover.js
+│   ├── models
+│   │   ├── app.js
+│   │   ├── book.js
+│   │   └── home.js
+│   ├── pages
+│   │   ├── Book
+│   │   │   └── index.js
+│   │   ├── Home
+│   │   │   ├── index.js
+│   │   │   └── style.less
+│   │   └── News
+│   │       └── index.js
+│   ├── services
+│   │   └── api.js
+│   └── utils
+│       ├── event.js
+│       ├── fastclick.js
+│       ├── future.js
+│       ├── login.js
+│       ├── normalize.js
+│       ├── openapp.js
+│       ├── tools.js
+│       ├── ua.js
+│       └── wechat.js
+└── yarn.lock
+```
 
 
 ## CSS namespace命名规范

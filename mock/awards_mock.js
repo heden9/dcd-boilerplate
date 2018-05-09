@@ -1,6 +1,7 @@
 const Mock = require('mockjs')
-module.exports = Mock.mock({
-    "status": "success",
+module.exports = () => {
+  return Mock.mock({
+    "status": 0,
     "prompts": "",
     "data": {
       "award_list|6": [{
@@ -14,4 +15,5 @@ module.exports = Mock.mock({
       }]
     },
     "message": "success"
-})
+  })
+}
