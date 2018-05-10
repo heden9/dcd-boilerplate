@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "root": true,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "__DEV__": true,
+    "__TEST__": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "camelcase": [0],
+    "react/prop-types": [0]
+  }
+}
