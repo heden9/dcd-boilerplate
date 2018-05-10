@@ -4,11 +4,15 @@
 - 确保 node 版本是 8.x 或以上
 - 用 [cnpm](https://github.com/cnpm/cnpm) 或 [yarn](https://github.com/yarnpkg/yarn) 能节约你安装依赖的时间
 
+
 ## 步骤一：安装依赖必备资源
+
 ```shell
-  npm i
-  # or
-  yarn
+  npm i -g dcd-cli
+```
+
+```shell
+  dcd init dcd-project
 ```
 
 
