@@ -12,8 +12,6 @@ import PropTypes from 'prop-types'
 import dynamic from 'dva/dynamic'
 import Cover from '../../layouts/Cover'
 
-require('./style.less')
-
 const { ConnectedRouter } = routerRedux
 
 const routes = [

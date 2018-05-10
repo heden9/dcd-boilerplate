@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
-
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
 var srcPath = relative('src')
 var assetsPath = path.resolve(srcPath, 'assets')
@@ -168,7 +168,7 @@ var config = {
                             }
                         },
                         {
-                            loader: 'sass-resources-loader',
+                            loader: 'sass-resources-loader', // 此处为less全局配置
                             options: {
                                 // Provide path to the file with resources
 
@@ -249,6 +249,7 @@ var config = {
     },
     plugins: plugins.concat([
         // new NyanProgressPlugin(),
+        new LodashModuleReplacementPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(), // Scope Hoisting https://zhuanlan.zhihu.com/p/27980441
         new CleanWebpackPlugin(['dist'], {
             root: rootPath

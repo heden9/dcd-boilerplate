@@ -3,7 +3,8 @@ export default {
 
   namespace: 'home',
 
-  state: {},
+  state: {
+  },
 
   subscriptions: {
     setup ({ dispatch, history }) {
@@ -13,7 +14,7 @@ export default {
 
   effects: {
     * fetch ({ payload }, { call, put }) {
-      const { data } = yield call(fetchTest)
+      const data = yield call(fetchTest)
       console.log(data)
       yield put({ type: 'save' })
     }

@@ -4,7 +4,7 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var config = require('./webpack.base.conf.js')
 config = Object.assign({}, config)
-
+var analyze = process.env.analyze || 'reject';
 config.plugins = config.plugins.concat([
 
     new webpack.DefinePlugin({
@@ -25,4 +25,10 @@ config.plugins = config.plugins.concat([
     }),
 ])
 
+if (analyze === 'resolve') {
+
+    config.plugins.push(
+        new BundleAnalyzerPlugin()
+    );
+}
 module.exports = config
