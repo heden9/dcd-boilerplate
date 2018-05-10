@@ -77,7 +77,7 @@ function resolve_pages (path, files) {
         plugins.push(new HtmlWebpackPlugin(options))
     }
 }
-var cssLoaderConfig = [
+var postcssPlugins = [
     pxtorem({
         rootValue: 50,
         propWhiteList: [],
@@ -98,7 +98,7 @@ var babelOpts = {
 if (__DEV__) {
     babelOpts.plugins.push('dva-hmr')
 }else {
-    cssLoaderConfig.push(
+    postcssPlugins.push(
         autoprefixer({browsers: ['> 5%', 'Firefox < 10', 'ie >= 8']})
     )
 }
@@ -139,7 +139,7 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: cssLoaderConfig,
+                                plugins: postcssPlugins,
                             }
                         }
                     ]
@@ -158,7 +158,7 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: cssLoaderConfig,
+                                plugins: postcssPlugins,
                             }
                         },
                         {
@@ -166,7 +166,16 @@ var config = {
                             options: {
                                 modifyVars: require('../config/less.vars'),
                             }
-                        }
+                        },
+                        {
+                            loader: 'sass-resources-loader',
+                            options: {
+                                // Provide path to the file with resources
+
+                                // Or array of paths
+                                resources: [relative('src/assets/styles/vars.less')]
+                            },
+                        },
                     ]
                 })
             },
@@ -183,10 +192,19 @@ var config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: cssLoaderConfig,
+                                plugins: postcssPlugins,
                             }
                         },
-                        'sass-loader'
+                        'sass-loader',
+                        {
+                            loader: 'sass-resources-loader',
+                            options: {
+                                // Provide path to the file with resources
+
+                                // Or array of paths
+                                resources: [relative('src/assets/styles/vars.scss')]
+                            },
+                        },
                     ]
                 })
             },

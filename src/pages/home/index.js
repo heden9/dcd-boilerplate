@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
-
+import './style'
 @connect()
 export default class Home extends Component {
   componentDidMount () {
@@ -8,7 +8,7 @@ export default class Home extends Component {
   }
   render () {
     return (
-      <div>page: Home</div>
+      <div className="home">page: Home</div>
     )
   }
 }

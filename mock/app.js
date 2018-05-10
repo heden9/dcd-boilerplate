@@ -1,9 +1,9 @@
-// delete require.cache[require.resolve('./awards_mock')]
 /**
  * mock 的示例，mockjs的使用参见 http://mockjs.com/examples.html
  */
 const proxy = {
   'GET /motor/pleasure/worldcup/awards/list': (req, res) => {
+    delete require.cache[require.resolve('./awards_mock')]
     res.send(require('./awards_mock')())
   },
 
