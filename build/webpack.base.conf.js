@@ -115,9 +115,14 @@ var config = {
         rules: [
             { // 在编译之前执行这个loader，如果报错了就不继续
                 enforce: 'pre',
-                test: /.(js|jsx)$/,
+                test: /.(js|jsx|ts)$/,
                 loader: 'eslint-loader',
                 include: relative('src')
+            },
+            {
+                test: /\.ts$/,
+                include: relative('src'),
+                use: "awesome-typescript-loader"
             },
             {
                 test: /\.(jsx|js)?$/,
