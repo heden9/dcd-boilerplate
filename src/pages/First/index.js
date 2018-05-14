@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import createFetcher from 'Util/createFetcher'
 import './style'
-import('iscroll')
+import iscroll from 'iscroll' // eslint-disable-line
 const fetchSometingApi = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

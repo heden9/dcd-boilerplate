@@ -289,6 +289,10 @@ var config = {
         })
     ]),
     resolve: {
+        modules: [
+            "node_modules",
+            path.resolve(__dirname, '../src')
+        ],
         extensions: ['.js', '.jsx', '.less'],
         alias: {
             // 路径别名

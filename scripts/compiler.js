@@ -3,7 +3,7 @@ var clearConsole = require('react-dev-utils/clearConsole')
 var formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 var chalk = require('chalk')
 var isInteractive = process.stdout.isTTY;
-clearConsole = () => {}
+// clearConsole = () => {}
 function Compiler(config, url) {
   let compiler
   try {

@@ -23,7 +23,7 @@ var isInteractive = process.stdout.isTTY; // 判断是否文本终端,便于clea
 var protocol = devenv.protocol
 var host = devenv.host
 
-clearConsole = () => {}
+// clearConsole = () => {}
 function setupDevConfig(port) {
   var devServerConfig = {
     // disableHostCheck: true,
@@ -32,9 +32,9 @@ function setupDevConfig(port) {
     https: protocol === 'https',
     compress: true, // 启动gzip压缩
     contentBase: path.join(__dirname, '../dist'),
-    // clientLogLevel: 'none',
+    clientLogLevel: 'none',
     hot: true, // 开启 Hot module replacement
-    // quiet: true,
+    quiet: true,
     overlay: {
       errors: true // 在webpack编译出错的时候，在页面上显示弹窗
     },
