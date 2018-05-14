@@ -4,6 +4,7 @@
 - 确保 node 版本是 8.x 或以上
 - 用 [cnpm](https://github.com/cnpm/cnpm) 或 [yarn](https://github.com/yarnpkg/yarn) 能节约你安装依赖的时间
 
+- 强烈建议使用yarn安装
 ## 步骤一：安装依赖必备资源
 ```shell
   npm i
@@ -39,6 +40,7 @@ $ npm run review gengweibiao.fe
 
 # Features
 
+-   已升级webpack4
 -   基于dva，绝对是最好用的redux方案。适用于各种场景
 -   server热重启、hmr。mockjs、postcss支持。stage-0、装饰器支持
 -   全局的less/sass文件自动import
