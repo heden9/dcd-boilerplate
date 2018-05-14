@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import createFetcher from 'Util/createFetcher'
 import './style'
+import('iscroll')
 const fetchSometingApi = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

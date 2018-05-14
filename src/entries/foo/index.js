@@ -15,6 +15,6 @@ const app = dva({
   })
 })
 
-app.router(require('./main'))
+app.router(require('./main').default)
 
 app.start('#root')

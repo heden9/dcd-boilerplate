@@ -10,7 +10,6 @@ const app = dva({
     effects: true
   })
 })
-
-app.router(require('./main'))
+app.router(require('./main').default)
 
 app.start('#root')

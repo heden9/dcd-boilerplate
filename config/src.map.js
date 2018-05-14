@@ -5,7 +5,6 @@ module.exports = {
     },
     scripts: {
         vendors: [
-            "babel-polyfill",
             "react",
             "react-dom"
         ],

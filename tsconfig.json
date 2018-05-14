@@ -10,6 +10,7 @@
       "es6",
       "es7",
       "dom"
-    ]
+    ],
+    "experimentalDecorators": true
   }
 }

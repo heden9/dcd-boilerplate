@@ -22,6 +22,8 @@ var { send, RESTART } = require('./send')
 var isInteractive = process.stdout.isTTY; // 判断是否文本终端,便于clearConsole
 var protocol = devenv.protocol
 var host = devenv.host
+
+clearConsole = () => {}
 function setupDevConfig(port) {
   var devServerConfig = {
     // disableHostCheck: true,
@@ -30,9 +32,9 @@ function setupDevConfig(port) {
     https: protocol === 'https',
     compress: true, // 启动gzip压缩
     contentBase: path.join(__dirname, '../dist'),
-    clientLogLevel: 'none',
+    // clientLogLevel: 'none',
     hot: true, // 开启 Hot module replacement
-    quiet: true,
+    // quiet: true,
     overlay: {
       errors: true // 在webpack编译出错的时候，在页面上显示弹窗
     },
@@ -47,7 +49,7 @@ function setupDevConfig(port) {
     // historyApiFallback: { // 让我们所有404的请求都返回这个
     //     index: '/home/index.html'
     // },
-    setup(app) {
+    before(app) {
       apiMocker(app, mocker);
     },
     proxy: {
@@ -82,9 +84,9 @@ function setupWatch(devServer) {
 function runDevServer(compiler, devConfig, url) {
   var devServer = new webpackDevServer(compiler, devConfig);
   devServer.use(WebpackHotMiddleware(compiler));
-  devServer.listen(devConfig.port, (err) => {
+  devServer.listen(devConfig.port, devConfig.host, (err) => {
     if (err) {
-      return console.log(err);
+      return console.error('error:', err);
     }
 
     if (isInteractive) {

@@ -1,9 +1,7 @@
-import '../utils/normalize'
-
-const FastClick = require('../utils/fastclick')
+import 'Util/fastclick.js'
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
-    FastClick.attach(document.body)
+    window.FastClick.attach(document.body)
   }, false)
 }
 if (__DEV__) {

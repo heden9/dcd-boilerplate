@@ -19,7 +19,7 @@ const routes = [
     path: '/home',
     exact: true,
     models: () => [import(/* webpackChunkName: "chunk-home" */ '../../models/home')],
-    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/Home')
+    component: () => import(/* webpackChunkName: "chunk-home" */ '../../pages/First')
   },
   {
     path: '/news',

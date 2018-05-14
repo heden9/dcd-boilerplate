@@ -15,7 +15,7 @@ Object.keys(config.entry).forEach(function (name) {
         ]
     }
 })
-
+config.mode = 'development';
 config.devtool = 'eval-source-map'; // 性能较好
 config.plugins = config.plugins.concat([
     new webpack.HotModuleReplacementPlugin(),

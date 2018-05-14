@@ -2,12 +2,11 @@ var path = require('path')
 var fs = require('fs')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
-var HtmlWebpackPlugin = require('html-webpack-plugin-for-multihtml')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var WebpackStableModuleIdAndHash = require('webpack-stable-module-id-and-hash')
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-var NyanProgressPlugin = require('nyan-progress-webpack-plugin')
+var MiniCssExtractPlugin = require("mini-css-extract-plugin")
 var srcPath = relative('src')
 var assetsPath = path.resolve(srcPath, 'assets')
 var utilsPath = path.join(assetsPath, 'js/utils/utils.js')
@@ -63,13 +62,17 @@ function resolve_pages (path, files) {
         }
 
         const options = {
-            multihtmlCache: true,
+            // multihtmlCache: true,
             filename: filename,
             template: (path || '') + '/' + (file.source ? file.source.replace(/%name/g, filename) : filename),
             inject: false,
             chunks: chunks,
             head: scripts.head || [],
-            body: scripts.body || []
+            body: scripts.body || [],
+            minify: {
+                minifyCSS: true,
+                minifyJS: true
+            }
         }
 
         file.options && Object.assign(options, file.options)
@@ -90,10 +93,11 @@ var babelOpts = {
             "targets": {
             "browsers": ["last 2 versions", "safari >= 7"]
             },
+            "modules": false, // 关闭解析模块，利于tree-shaking
             "loose": true
         }]
         , 'react', 'stage-0'],
-    plugins: ['transform-decorators-legacy', 'add-module-exports']
+    plugins: ['transform-runtime', 'transform-decorators-legacy', 'lodash'] // 删除add-module-exports，有bug
 }
 if (__DEV__) {
     babelOpts.plugins.push('dva-hmr')
@@ -134,95 +138,111 @@ var config = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    publicPath: '../',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: postcssPlugins,
-                            }
+                use: [
+                    __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: postcssPlugins,
                         }
-                    ]
-                })
+                    }
+                ]
             },
             {
                 test: /\.less$/,
                 include: relative('src'),
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    publicPath: '../',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: postcssPlugins,
-                            }
-                        },
-                        {
-                            loader: 'less-loader',
-                            options: {
-                                modifyVars: require('../config/less.vars'),
-                            }
-                        },
-                        {
-                            loader: 'sass-resources-loader', // 此处为less全局配置
-                            options: {
-                                // Provide path to the file with resources
+                use: [
+                    __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: postcssPlugins,
+                        }
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            modifyVars: require('../config/less.vars'),
+                        }
+                    },
+                    {
+                        loader: 'sass-resources-loader', // 此处为less全局配置
+                        options: {
+                            // Provide path to the file with resources
 
-                                // Or array of paths
-                                resources: [relative('src/assets/styles/vars.less')]
-                            },
+                            // Or array of paths
+                            resources: [relative('src/assets/styles/vars.less')]
                         },
-                    ]
-                })
+                    },
+                ]
             },
             {
                 test: /\.(sass|scss)$/,
                 include: relative('src'),
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    publicPath: '../',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: postcssPlugins,
-                            }
-                        },
-                        'sass-loader',
-                        {
-                            loader: 'sass-resources-loader',
-                            options: {
-                                // Provide path to the file with resources
+                use: [
+                    __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: postcssPlugins,
+                        }
+                    },
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            // Provide path to the file with resources
 
-                                // Or array of paths
-                                resources: [relative('src/assets/styles/vars.scss')]
-                            },
+                            // Or array of paths
+                            resources: [relative('src/assets/styles/vars.scss')]
                         },
-                    ]
-                })
+                    },
+                ]
             },
             {
                 test: /\.(jpeg|jpg|png|gif|svg)$/,
                 include: relative('src'),
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 2048,
-                        name: `image/[name]${__DEV__ ? '' : '_[hash]'}.[ext]`
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 2048,
+                            name: `image/[name]${__DEV__ ? '' : '_[hash]'}.[ext]`
+                        }
+                    },
+
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: { // 压缩 jpeg 的配置
+                                progressive: true,
+                                quality: 65
+                            },
+                            optipng: { // 使用 imagemin-optipng 压缩 png，enable: false 为关闭
+                                enabled: __PROD__,
+                            },
+                            pngquant: { // 使用 imagemin-pngquant 压缩 png
+                                quality: '65-90',
+                                speed: 4
+                            },
+                            gifsicle: { // 压缩 gif 的配置
+                                interlaced: false,
+                            },
+                            webp: { // 开启 webp，会把 jpg 和 png 图片压缩为 webp 格式
+                                quality: 75
+                            },
+                        }
                     }
-                }]
+                ]
             },
             {
                 test: /\.(woff|woff2|ttf|eot|otf)$/,
@@ -255,7 +275,6 @@ var config = {
     plugins: plugins.concat([
         // new NyanProgressPlugin(),
         new LodashModuleReplacementPlugin(),
-        new webpack.optimize.ModuleConcatenationPlugin(), // Scope Hoisting https://zhuanlan.zhihu.com/p/27980441
         new CleanWebpackPlugin(['dist'], {
             root: rootPath
         }),
@@ -267,21 +286,7 @@ var config = {
             __DEV__,
             __TEST__,
             __PROD__,
-        }),
-
-        new ExtractTextPlugin({
-            filename: `css/[name]${__DEV__ ? '' : '_[contenthash]'}.css`,
-            allChunks: true,
-            disable: __DEV__
-        }),
-
-        new ImageminPlugin({
-            disable: __DEV__,
-            pngquant: {
-                quality: '95-100'
-            }
-        }),
-        new webpack.HashedModuleIdsPlugin(),  // 优化hash值=>缓存优化
+        })
     ]),
     resolve: {
         extensions: ['.js', '.jsx', '.less'],
@@ -294,7 +299,7 @@ var config = {
             Service: relative('src/services'),
             Page: relative('src/pages')
         },
-    }
+    },
 }
 
 module.exports = config

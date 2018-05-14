@@ -3,7 +3,7 @@ var clearConsole = require('react-dev-utils/clearConsole')
 var formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 var chalk = require('chalk')
 var isInteractive = process.stdout.isTTY;
-
+clearConsole = () => {}
 function Compiler(config, url) {
   let compiler
   try {
@@ -15,7 +15,7 @@ function Compiler(config, url) {
     console.log();
     process.exit(1);
   }
-  compiler.plugin('invalid', () => {
+  compiler.hooks.invalid.tap('devConsoleClear', () => {
     if (isInteractive) {
       clearConsole();
     }
@@ -23,7 +23,7 @@ function Compiler(config, url) {
   });
 
   let isFirstCompile = true;
-  compiler.plugin('done', (stats) => {
+  compiler.hooks.done.tap('devErrorCatched', (stats) => {
     if (isInteractive) {
       clearConsole();
     }
